@@ -23,16 +23,6 @@ Robot target positions
 
 - make-arrays:  Help populate arm position arrays.
 
-Moving pieces
-
-- dgt.chess.makemove:  Execute move given in algebraic notation.
-
-- moveto:  Move robot arm to destination (given by joint positions).
-
-- positions.names:  Helps convert board position (like e5) into number (1-64).
-
-- dgt.chess.init:  Move robot into neutral position.
-
 Reading board
 
 - dgt.chess.getboard:  Retrieve current position from board, converts to .epd format.
@@ -53,6 +43,16 @@ Deciding move
 
 - dgt.chess.phone, phone.wav:  Cause phone to ring, and direct robot to pick it up.
 
+Moving pieces
+
+- dgt.chess.makemove:  Execute move given in algebraic notation.
+
+- moveto:  Move robot arm to destination (given by joint positions).
+
+- positions.names:  Helps convert board position (like e5) into number (1-64).
+
+- dgt.chess.init:  Move robot into neutral position.
+
 Not used
 
 - dgt.test: Not used.
@@ -67,8 +67,16 @@ Not used
 
 - ttt: precursor of the chess robot that plays tic-tac-toe.
 
+Issues
 
+- After a couple of days of no-use, robot can't move arm (but can move fingers).
+
+- Want to port to Raspberry Pi.
+
+
+===================================================
 ================= OLD NOTES =======================
+===================================================
 
 Chess engines I looked at:
 
