@@ -1,48 +1,71 @@
 # chess-robot
 
 Code for a chess-playing robot that uses:
-  - Kinova Mico arm
-  - DGT sensory chessboar
+  - Kinova Mico robot arm
+  - ROS Kinetic robot operating system
+  - DGT sensory chessboard
   - GNUchess engine
   - Very old telephone
 
-dgt.chess.arrays
-dgt.chess.decide
-dgt.chess.exe
-dgt.chess.getboard
-dgt.chess.gnu
-dgt.chess.init
-dgt.chess.makemove
-dgt.chess.nextpos
-dgt.chess.phone
-dgt.chess.play
-dgt.chess.pos
-dgt.chess.pos1
-dgt.chess.pos2
-dgt.chess.posnow
-dgt.chess.startpos
-dgt.test
+To initialize robot arm:
+  - cd catkin*; source devel/setup.bash; launch
 
-getboard
+To launch chess player:
+  - cd catkin*; srouce devel/setup.bash; cd src/chess-robot; ./dgt-chess-play
 
-getrobotpos
+Top-level control
 
-make-arrays
+- dgt.chess.play:  Top-level controller for chess player.
 
-moveto
-moveto1
-moveto.134.2
-moveto2
-moveto3
+Robot target positions
 
-output.epd
+- dgt.chess.arrays:  Robot arm positions for grasping pieces and hovering over them.
 
-phone
-phone.wav
+- make-arrays:  Help populate arm position arrays.
 
-positions.names
+Moving pieces
 
-ttt: precursor of the chess robot that plays tic-tac-toe.
+- dgt.chess.makemove:  Execute move given in algebraic notation.
+
+- moveto:  Move robot arm to destination (given by joint positions).
+
+- positions.names:  Helps convert board position (like e5) into number (1-64).
+
+- dgt.chess.init:  Move robot into neutral position.
+
+Reading board
+
+- dgt.chess.getboard:  Retrieve current position from board, converts to .epd format.
+
+- getboard/kk4.o:  Directory getboard has C program (kk4.c) to read board.
+
+Deciding move
+
+- dgt.chess.decide:  Take board position and use GNUchess to return best move, in algebraic notation.
+
+- dgt.chess.exe:  Transient file that interactively calls GNUchess.
+
+- dgt.chess.startpos: File that stores start position, for checking.
+
+- dgt.chess.pos*: Transient files that records position.
+
+- dgt.chess.nextpos:  Transient file that records position.
+
+- dgt.chess.phone, phone.wav:  Cause phone to ring, and direct robot to pick it up.
+
+Not used
+
+- dgt.test: Not used.
+
+- getrobotpos:  Not used.
+
+- dgt.chess.gnu: Not used. 
+
+- moveto1, moveto.134.2, moveto2, moveto3:  Not used.
+
+- output.epd:  Not used.
+
+- ttt: precursor of the chess robot that plays tic-tac-toe.
 
 
 ================= OLD NOTES =======================
