@@ -1,0 +1,12 @@
+
+# quits when the number of purple (human) pieces equals the number of blue (robot) pieces
+# assumes robot moves first
+
+while [ 1 ]; do
+  POS=`scr.analyze | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=0} {if ($0=="P") a++; else if ($0=="B") a--} END {printf("%d\n",a)}'`
+  echo $POS
+  if [ "$POS" -eq 0 ]
+  then break 
+  fi
+done  
+

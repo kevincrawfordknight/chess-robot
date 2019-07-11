@@ -1,0 +1,6 @@
+#!/usr/bin/expect
+spawn /usr/games/gnuchess --uci
+send "position fen 8/4n1p1/1p3p1p/3p1P1P/2pP1KP1/2k2N2/2P5/q7 w KQkq - \r"
+send "go depth 2 \r"
+expect bestmove
+send "quit \r"

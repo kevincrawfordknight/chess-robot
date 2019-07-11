@@ -1,0 +1,25 @@
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -30 0 0
+
+./moveto2 227.453918457 245.708694458 68.8759841919 180.206817627
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -10  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 20 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 13  0 0
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree --  -3 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 10 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -3 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 6 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -3 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 10 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -3 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 6 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -3 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 10 0  0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -3 0  0 0
+
+./moveto 264.173461914 247.434173584 71.499710083 180.20652771
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -30 0 0
+

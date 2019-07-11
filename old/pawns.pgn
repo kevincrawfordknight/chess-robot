@@ -1,0 +1,70 @@
+[Event "Computer chess game"]
+[Site "kevin-N24-25BU"]
+[Date "2018.03.02"]
+[Round "?"]
+[White "kevin"]
+[Black "Hermann Linux 2.7.1 64 bit"]
+[Result "*"]
+[BlackElo "2400"]
+[Time "17:40:01"]
+[WhiteElo "2400"]
+[TimeControl "300"]
+[SetUp "1"]
+[FEN "3k4/1ppppp2/8/8/8/8/1PPPPP2/3K4 b - - 0 1"]
+[Termination "unterminated"]
+[PlyCount "0"]
+[WhiteType "program"]
+[BlackType "human"]
+
+1. ... *
+
+[Event "Computer chess game"]
+[Site "kevin-N24-25BU"]
+[Date "2018.03.02"]
+[Round "?"]
+[White "kevin"]
+[Black "Hermann Linux 2.7.1 64 bit"]
+[Result "*"]
+[BlackElo "2400"]
+[Time "17:41:35"]
+[WhiteElo "2400"]
+[TimeControl "300"]
+[SetUp "1"]
+[FEN "3k4/1ppppp2/8/8/8/8/1PPPPP2/3K4 b - - 0 1"]
+[Termination "unterminated"]
+[PlyCount "0"]
+[WhiteType "program"]
+[BlackType "human"]
+
+1. ... *
+
+[Event "Computer chess game"]
+[Site "kevin-N24-25BU"]
+[Date "2018.03.02"]
+[Round "?"]
+[White "kevin"]
+[Black "Hermann Linux 2.7.1 64 bit"]
+[Result "*"]
+[BlackElo "2000"]
+[Time "17:42:49"]
+[WhiteElo "2400"]
+[TimeControl "300"]
+[SetUp "1"]
+[FEN "3k4/1ppppp2/8/8/8/8/1PPPPP2/3K4 b - - 0 1"]
+[Termination "unterminated"]
+[PlyCount "13"]
+[WhiteType "human"]
+[BlackType "program"]
+
+1. ... c5 {(c7-c5 d2-d3 Kd8-c7 Kd1-d2 Kc7-d6 Kd2-c3 Kd6-d5 e2-e4+ Kd5-c6
+b2-b4 b7-b6 Kc3-c4 b6-b5+ Kc4-c3 d7-d5 f2-f3 d5-d4+ Kc3-b3 Kc6-d6 b4xc5+
+Kd6xc5 f3-f4) +0.05/1 0} 2. d3 {(d2-d3 Kd8-c7 Kd1-d2 Kc7-c6 b2-b3) -0.04/17
+5} b5 3. b3 Kc7 {(Kd8-c7 Kd1-d2 Kc7-d6 Kd2-e3 Kd6-e5 c2-c3 d7-d6 d3-d4+
+c5xd4+ c3xd4+ Ke5-d5 Ke3-d3 f7-f5 f2-f3 f5-f4 b3-b4 e7-e5 d4xe5) +0.06/17
+0} 4. Kd2 Kd6 {(Kc7-d6 Kd2-e3 Kd6-e5 c2-c3 d7-d6 d3-d4+ Ke5-d5 d4xc5 d6xc5
+Ke3-f4 b5-b4 c3xb4 c5xb4 Kf4-e3 f7-f6 f2-f4) +0.05/17 0} 5. Ke3 Ke5
+{(Kd6-e5 c2-c3 b5-b4 f2-f4+ Ke5-f5 c3xb4 c5xb4 Ke3-f3 d7-d5 e2-e4+ Kf5-e6
+Kf3-e3 d5xe4 d3xe4 f7-f5 Ke3-d4) +0.08/18 0} 6. d4+ cxd4+ {(c5xd4+ Ke3-f3
+f7-f6 e2-e3) +1.61/16 0} 7. Kd3 Kd5 {(Ke5-d5 c2-c3 d4xc3 Kd3xc3 f7-f5
+Kc3-d3 Kd5-c5 Kd3-c3 f5-f4 e2-e3) +1.65/19 0} *
+

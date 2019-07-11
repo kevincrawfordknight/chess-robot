@@ -1,0 +1,384 @@
+
+Story of Tic-Tac-Toe playing robot.
+
+Why is it easy to program a Tic-Tac-Toe program, but hard to build a
+Tic-Tac-Toe robot?
+
+- Not money!  raspberry pi costs $40, robot arm costs $35, camera costs $30.
+
+- Robot requires Ikea-like assembly: 200 parts, three evenings
+
+- Robot plugs in with USB, but needs a Linux/C++ driver
+  - Someone on the internet has "reverse-engineered" the driver by "sniffing"
+    proprietary windows driver
+  - Can control the robot from linux command line
+
+- Robot has no sensors, so it doesn't know "where it is"
+
+- Robot has four degrees of freedom, each controlled by a motor
+  - If motor stops working, tighten screw on plastic box with motor/gears
+  - Causing gears to skip will reduce lifetime of that part of system
+
+- Movement is time-based (e.g., rotate left for 1.5 seconds)
+  - Not easy to get repeatability
+    - Left for 1.5 secs, then right for 1.5 secs -- position not the same!
+    - Especially acute for up-down elbow -- downward movement goes futher
+      than upward movement, per time unit.
+
+- Camera works well
+  - Takes about a second to snap a picture, though.
+  - 3280 x 2464 pixels (5.6Mbytes)
+
+- Manually issuing commands to the robot (using human vision) works!
+  - Very slow, constant repositioning, no overall plan, re-planning each step
+  - So all that's needed is "physical AI"...
+
+- Camera is needed for detecting human moves (ignore robot for now)
+  - Turn pixel image into board representation, eg:
+       ---
+       -X-   or string "----X-O--"
+       O--
+  - Fix camera position, determine centers of each of 9 squares, use
+    ImageMagick to get average pixel value of 10x10 region around center, 
+    manually build a classifier to map (R,G,B) onto (BLACK, WHITE, EMPTY).
+  - Collected 90 examples, classifier worked on 89/90 :(
+  - Could modify pieces to improve classification!
+
+- Camera is also needed onboard robot to help it get "into standard position",
+  since it doesn't have internal sensors.  
+  - From the standard position, it can execute planned motions fairly well.  
+  - Standard position can also serve as to "fix camera position" in the 
+    photo-to-board-rep conversion above.
+  - Just need a unique, fixed reference point in the environment, such as
+    a big red dot.  If robot can see this dot, it can maneuver until it
+    is pointing straight at the dot.  Algorithm:
+    - Find location of dot in camera image.  (Locate by color.)
+    - Rotate X seconds toward the dot.
+    - Find location of dot in camera image again.
+    - Estimate how many more seconds to rotate (either continue or go back)
+      in order to point at the dot.
+    - Rotate again toward the dot.
+    - Find location of dot in camera image again.  
+    - If not quite centered, repeat with X/2.
+  
+- "Robot Arm Not Found" or "Camera Not Found"
+  - Fix: Unplug USB, and re-plug it.  
+  - Can we do better?
+
+- 1/100 robot commands, nothing happens.  Move it in the opposite direction, 
+  then things are ok again.  For some reason, failure to move is much 
+  more common when engaging multiple motors simultaneously (~ 1/20)
+
+- The gripper doesn't have a pressure sensor.  
+    Lucky case: rubber grips object at very end of the squeeze.
+    Failure case #1: rubber never reaches object.
+    Failure case #2: rubber grasps object, but then gear "clicks" open.
+
+  Here's a trick to grip:
+    First squeeze for 0.5 seconds, expecting a click or loose grip
+    Then (important) wait for a second
+    Then squeeze for 0.1 seconds (solidifies the rubber to object)
+ 
+  This work 95% of the time.  The other 5% corresponds to the lucky case 
+  above, in which case the additional 0.1 "clicks" open and ruins it!
+ 
+  Another strategy:
+    Squeeze 0.5, 0.25, 0.125, 0.0625.  With sleep 0.5 in between each.
+
+  Or use softer objects?!
+
+- Big question: suppose we are in a known configuration.  Can we 
+  *blindly* (a) move to a spare piece, (b) place spare piece, (c) return
+  to a position from which we can see the red dot?  (Then re-engage
+  camera & center on red dot again).  Or do we need to use the camera
+  along during (a,b,c)?
+
+- Much simpler if we can reduce the degrees of freedom.  For example,
+  let's try keeping the wrist fixed and only move the shoulder & elbow.
+  Seems we can reach all parts of the board.
+
+  However, now there may be multiple shoulder/elbow configurations
+  that all focus the camera on the red dot.  Thus we don't know which
+  configuration we are in!
+
+- Need a board such that:
+  - There is a configuration from which robot can see the whole board 
+    (to decide next move) and the red dot (for orientation)
+  - Robot can reach all squares (to place pieces)
+
+- Perhaps home configuration can be "squat" (shoulder back, elbow down)
+  - after placing piece, return roughly to squat position, then
+    fine-tune using red dot.
+
+- Modified owi.cc => owi2.cc, in how it searches for the arm.  We can now 
+  control both robot arms from the same Pi.  This is good, because the 
+  sensory chessboard can only plug into one Pi.
+
+1/17
+
+Goal: orient to red dot, then pick up piece and move it.  
+      do this reliably, if piece is in same location.
+      accomplished.
+
+2/16/17
+
+Goal: orient to red dot, then pick up piece and move it.
+      orient to red dot, then pick up SAME piece and move it BACK.
+      auto-repeat.
+      see how many times it can repeat this without failing to grab piece.
+
+Added furniture padding to gripper, softens it, works every time!
+New problem: Gripper sometimes won't release!
+Apparently happens when the gripper is holding on very tightly.
+Solution: Don't grip so tight. 
+
+2/19/17
+
+Goal: orient to red dot, grip object, pick it up, put it down
+      auto-repeat
+      see how many times
+
+Problem: gripper fails to release
+Problem: gripper misses object, due to bad placement of arm and/or object
+
+Once succeeded 5 times in a row.
+Most runs 1-2 times in a row.
+
+2/20/17
+
+Idea: build probabilistic model of how far the arm moves under same command.
+
+Use camera to record effect.
+
+Just noticed that the first move in a new direction has a "start up" cost
+in terms of distance.  So after rightward movement, 0.1 seconds leftward
+might not move it at all, but the next 0.1 seconds moves it leftward N mm 
+(as do subsequent moves).
+
+2/20/17
+
+Change from orienting red dot to red object (die).
+
+Focus on object by moving elbow (only), pick up object, move it to the right.
+Focus on object by moving elbow, pick up object, move it back to the left.
+Repeat.
+
+Great repeatability -- 15 times in a row!
+Glitches 10% of the time by failing to release object, but then recovers.
+
+After much testing, also glitched by "clicking" on the grasp and losing 
+object.
+
+Procedure needs to be "burnt in" somehow.  It won't work from any random
+position.  The gripper in particular needs to "get into the groove".
+
+2/20/17
+
+Three alterations to camera:
+
+  -w 100 -h 75 -q 100  
+     Big speedup & don't have to -resize later.
+     However, colors are faded.  Fixed by next alteration.
+
+  -sa 70 
+     Saturated colors -- red becomes really red, easy to spot!
+
+  Raised position of camera
+    Avoids seeing own gripper mechanism, which shows up red in some lighting.
+    Sees more of the world.
+
+2/23/17
+
+Nails that affix camera in rasied position are problematic: so heavy
+that lifting elbow is too hard when shoulder is leaning forward!
+
+If shoulder is fixed, we previously determined how to move elbow into
+fixed position -- move until red object is in fixed y-position of camera.
+
+If shoulder can also move (in addition to elbow), then we need to determine
+positions of both.
+
+Solution:  Use red and green objects at fixed locations, both equally distant
+from robot, separated by some space.
+
+For any given shoulder position, calculate d:
+  - move elbow to center the TWO objects in y-position of camera
+  - d = distance between objects in their x-positions
+If shoulder is leaning far back, then d will be small.
+If shoulder is leaning far forward, then d will be big.
+
+To obtain a given shoulder position (with distance d-goal):
+  d=0
+  repeat until d = d-goal:
+  - move elbow to center the TWO objects in y-position of camera
+  - d = distance between objects in their x-positions
+  - if d > d-goal, move shoulder back a bit (60 00 00 0.5)
+  - if d < d-goal, move shoulder forward a bit (90 00 00 0.2)
+
+I have done this only in the moving forward direction.  Assuming the robot
+starts in a fairly rear-type position, it will move forward until stopping.
+
+2/25/17
+
+Need to dissolve super-glue holding nails with (ironically) nail polish remover.
+Hard to find it by myself in the store.
+
+Excellent progress!  We can now place a blue object in any of the 9 squares of
+the tic-tac-toe board, e.g.:
+  % scr.place 6  /* square 6, right-side-center square */
+It's pretty accurate!
+
+I rely on multi-motor moves.  The ones without rotation (90 0 0 and 60 0 0) work
+great.  The ones with rotation (60 2 0) don't always work.
+
+Robot is very slow in rotating leftwards.  Replaced battery, but that only
+helped for a few minutes.  Something is wrong with the motor/gears.
+That's also why (60 2 0) doesn't work.
+
+2/26/17
+
+Fixed slow rotator -- unscrewed it and re-assembled.  Maybe the screw was too tight.
+Now all multi-motor moves are working well.  And maybe the nails are not too
+heavy after all.
+
+New objects arrived.  Blue and purple are good colors for the pieces.  They
+are recognizable, and they don't interfere with the red and green positional markers.
+
+Can now fairly reliably place blue piece (being held) at any position 1-9 on the board.
+After the placement, robot returns to a central-type position, ready to repeat.
+
+Robot killed ant by placing object on top of it!
+
+Built a board analyzer, locates blue and purple objects.  Need to be in
+correct position for it to work.  Can get there quickly and reliably
+by fixating on the <red,green> position, then backing up a fixed amount.
+
+Tried grabbing a piece from fixed off-board position.  Didn't work well.
+If the gripper is a fixed position off the ground, this will work; however,
+the <red,green> position only very approximately fixes the distance to 
+ground -- good enough for placing pieces, but not good enough for picking
+them up!
+
+3/1/17
+
+Used additional off-board red & green dots to orient gripper towards
+an off-board piece.  Robot makes slow "90" moves until the red &
+green dots are at least 37 pixels apart, then grips piece.
+
+Can now go grab piece and place it in any specified position!  Worked 5 times
+in a row so far.  
+
+First time robot can make a complete move by itself (pick up piece and 
+place it somewhere on the board).
+
+Feel like I'm getting very close to being able to play a whole game!
+
+3/2/17
+
+Placed the off-board piece a little closer.
+
+Played first whole game!
+
+Robot only made two mistakes:
+1) place piece on top of another one of its own pieces, which was out of 
+view (due to previous, slightly off placement)
+2) failed to pick up the very last piece.
+
+Also, I have to supply the robots pieces by putting them in a fixed
+location, one by one, as needed.
+
+Finally, the robot plays randomly.  But I let it win.
+
+3/3/17
+
+Tried another whole game.  I think my finger got into the photo, so it
+missed x-orientation, wound up straddle the two sets of dots.
+
+3/4/17
+
+Got other Pi working with small screen.
+
+Piece at position 5 interfered with moving to 8.  Added vertical lift
+to clear the obstacle.
+
+Tried another whole game.  Three moves perfectly.  On fourth move, 
+purple piece at 2 seemed to interfere with red-green distance calculation 
+(suddenly became very small).
+
+Just a thought -- this should work no matter even if the robot isn't
+placed just so, relative to the board.  Tried it: Didn't quite work.
+If robot is closer to board, more chance of "digging" into the board
+when grasping or dropping piece.
+
+Tried another game.  Only one mistake!  Failed to grasp piece due to
+"digging" into table top.  Adjusted red-green distance.  Didn't work.
+Maybe need more resolution on the height before swinging over to the
+piece (0.5 -> 0.3).
+
+Played first complete game without errors!  (Though it didn't quit when
+done -- it hallucinated an empty space in position 6).  Of course, robot
+plays randomly -- chooses the empty square closest to itself.
+
+3/5/17
+
+Implemented "wait for human to move".  Was tracking whether the number
+of pieces increased or not.  Worried that the human may have moved
+already.  Decided to continue when the number(purple) = number(blue).
+
+Fails to pick up a piece 10% of the time.
+
+Placed piece in position 8 where it couldn't see it.
+
+Light signals human's turn to move.
+
+Purple cube turned sideways creates a "red shadow".  Robot loses red dot
+and can't orient to analyze board.
+
+Built a wedge "slide" out of wood to dispense the robot's pieces.  So the 
+"ready" piece is always in the same place.  Not fully tested.
+
+3/6/17
+
+Rotation was slowing again -- had to unscrew again.  Over time, it gets
+slower, making red-green orientation a must for long-lived behavior.
+
+Argh, robot moves better, but it ruined everything!!  Nothing works 
+anymore.  Even grasping is "out of sync" -- grasps the pieces too lightly.
+
+3/8/17
+
+Okay, got it back to normal, more or less.  I set up a "practice script"
+for placing pieces in positions 1-9, and have it returning to a neutral
+position.  Don't need to check for x-position after that, so a little bit
+faster wrapping up the move.
+
+This exercise revealed that piece shadows show up red sometimes; the more
+pieces on the board, the more trouble.  So I had to change the red fuzz 
+from 35 to 28.  
+
+But then grabbing the piece became poor -- as the robot gets closer, it
+casts a shadow over the red marker, which becomes invisible at fuzz 28.
+So I keep the fuzz at 38 during the pick up, returning to 28 later.
+
+Still, only about 2/3 success rate picking up.  Both x and y tend to be off.
+
+Going to leave the slide out of the equation for now, feeding it pieces
+manually.
+
+3/11
+
+First complete game, end to end, no mistakes, quit
+on time.
+
+Repeatability still an issue:
+ - misreads board
+ - fails to pick up
+ - puts piece not in center of square
+ - bumps into other piece
+
+But working.
+
+Have to feed pieces manually.
+
+No AI, no celebration dance, etc.
+

@@ -1,0 +1,1000 @@
+ 1105  move 10 00 00 1
+ 1106  fs.correct 10 10
+ 1107  move 00 01 00 0.4
+ 1108  move 20 00 00 0.2
+ 1109  move 01 00 00 1
+ 1110  move 02 00 00 1
+ 1111  move 10 02 00 1
+ 1112  fs.correct 10 10
+ 1113  move 00 01 00 0.3
+ 1114  move 20 00 00 0.3
+ 1115  move 10 00 00 0.1
+ 1116  move 01 00 00 1
+ 1117  move 10 02 00 1
+ 1118  move 02 00 00 1
+ 1119  fs.correct 10 10
+ 1120  move 00 01 00 0.3
+ 1121  move 20 00 00 0.1
+ 1122  move 01 00 00 1
+ 1123  move 01 00 00 0.1
+ 1124  move 10 00 00 0.1
+ 1125  move 10 00 00 1
+ 1126  move 02 00 00 1
+ 1127  fs.correct 10 10
+ 1128  move 00 01 00 0.3
+ 1129  move 20 00 00 0.1
+ 1130  move 01 00 00 1
+ 1131  move 01 00 00 0.1
+ 1132  move 10 00 00 2
+ 1133  move 02 00 00 1
+ 1134  history >p1
+ 1135  chmod 755 p1
+ 1136  vi p1
+ 1137  move 20 00 00 0.3
+ 1138  p1
+ 1139  vi p1
+ 1140  p1
+ 1141  move 20 02 00 1
+ 1142  move 00 02 00 1
+ 1143  move 00 02 00 0.5
+ 1144  vi p1
+ 1145  p1
+ 1146  move 00 02 00 0.5
+ 1147  p1
+ 1148  move 00 02 00 4
+ 1149  move 01 00 00 1
+ 1150  move 20 00 00 2
+ 1151  move 10 00 00 2
+ 1152  history >>p1
+ 1153  vi p1
+ 1154  move 02 00 00 1
+ 1155  cat p1
+ 1156  move 10 01 00 1
+ 1157  vi p1
+ 1158  move 20 00 00 1.3
+ 1159  p1
+ 1160  move 10 02 00 1
+ 1161  move 20 02 00 1
+ 1162  move 10 02 00 1
+ 1163  move 00 02 00 1
+ 1164  p1
+ 1165  vi p1
+ 1166  p1
+ 1167  vi p1
+ 1168  move 02 00 00 0.1
+ 1169  move 01 00 00 0.1
+ 1170  move 02 00 00 0.05
+ 1171  p1
+ 1172  move 00 02 00 1
+ 1173  p1
+ 1174  vi p1
+ 1175  p1
+ 1176  move 20 02 00 0.5
+ 1177  move 10 01 00 0.5
+ 1178  p1
+ 1179  vi p1
+ 1180  move 00 02 00 1
+ 1181  vi p1
+ 1182  move 00 02 00 2
+ 1183  move 00 01 00 4
+ 1184  p1
+ 1185  vi p1
+ 1186  p1
+ 1187  vi fs.correct 
+ 1188  p1
+ 1189  move 00 02 00 2
+ 1190  move 00 02 00 1
+ 1191  vi fs.correct 
+ 1192  p1
+ 1193  vi fs.correct 
+ 1194  vi p1
+ 1195  p1
+ 1196  vi p1
+ 1197  move 20 00 00 0.6
+ 1198  p1
+ 1199  move 0 0 0 1
+ 1200  move 00 02 00 6
+ 1201  move 10 00 00 1
+ 1202  p1
+ 1203  vi p1
+ 1204  p1
+ 1205  vi p1
+ 1206  p1
+ 1207  vi fs.correct 
+ 1208  p1
+ 1209  vi fs.correct 
+ 1210  p1
+ 1211  vi fs.correct 
+ 1212  move 00 02 00 1
+ 1213  p1
+ 1214  shutdown -h now
+ 1215  cd work/lincoln/owi-arm/
+ 1216  move 00 02 00 01
+ 1217  move 10 00 00 01
+ 1218  move 01 00 00 1
+ 1219  move 01 00 00 0.2
+ 1220  move 02 00 00 1
+ 1221  move 01 00 00 1
+ 1222  move 01 00 00 0.1
+ 1223  move 02 00 00 1
+ 1224  move 01 00 00 1
+ 1225  move 10 00 00 01
+ 1226  move 02 00 00 1
+ 1227  move 01 00 00 1
+ 1228  move 01 00 00 0.2
+ 1229  move 01 00 00 0.1
+ 1230  move 10 00 00 0.1
+ 1231  move 00 01 00 2
+ 1232  move B0 00 00 0.3
+ 1233  move B0 00 00 0.1
+ 1234  move 00 02 00 0.3
+ 1235  move 00 01 00 0.8
+ 1236  move 00 02 00 0.8
+ 1237  move 10 00 00 0.8
+ 1238  move 00 02 00 0.3
+ 1239  move 00 01 00 0.3
+ 1240  move 00 02 00 0.3
+ 1241  move 00 01 00 0.3
+ 1242  move 00 02 00 2
+ 1243  move 00 02 00 1
+ 1244  move B0 00 00 0.4
+ 1245  move B0 00 00 0.2
+ 1246  move 00 02 00 1
+ 1247  move 60 00 00 1
+ 1248  move 50 00 00 1
+ 1249  move 90 00 00 1
+ 1250  move 00 01 00 2
+ 1251  move 00 02 00 2
+ 1252  move 40 00 00 2
+ 1253  move 00 02 00 2
+ 1254  move 90 00 00 2
+ 1255  move 50 00 00 2
+ 1256  move 20 00 00 2
+ 1257  move 01 00 00 0.1
+ 1258  move 90 00 00 1
+ 1259  move B0 00 00 1.2; move 00 01 00 2; move 00 02 00 0.5; move 40 00 00 1
+ 1260  move 00 02 00 2
+ 1261  history
+ 1262  move 50 00 00 1
+ 1263  move 40 00 00 1
+ 1264  move 00 01 00 4
+ 1265  move 40 00 00 1
+ 1266  move 20 00 00 1
+ 1267  move 20 00 00 2
+ 1268  move 10 00 00 1
+ 1269  move 02 00 00 1
+ 1270  move 01 00 00 1
+ 1271  move 01 00 00 0.1
+ 1272  move 10 00 00 1
+ 1273  move 20 00 00 1
+ 1274  move 10 00 00 1
+ 1275  move 20 00 00 0.7
+ 1276  move 10 00 00 1
+ 1277  move 20 00 00 0.7
+ 1278  move 10 00 00 1
+ 1279  move 20 00 00 0.6
+ 1280  move 10 00 00 1
+ 1281  move 20 00 00 0.4
+ 1282  move 10 00 00 1
+ 1283  move 20 00 00 0.3
+ 1284  move 10 00 00 1
+ 1285  move 20 00 00 0.3
+ 1286  move 10 00 00 1
+ 1287  move 20 00 00 0.4
+ 1288  move 10 00 00 1
+ 1289  move 20 00 00 0.5
+ 1290  move 10 00 00 0.5
+ 1291  move 20 00 00 0.4
+ 1292  move 10 00 00 0.5
+ 1293  move 20 00 00 0.4
+ 1294  move 10 00 00 0.5
+ 1295  move 10 00 00 0.1
+ 1296  move 20 00 00 0.4
+ 1297  move 10 00 00 0.7
+ 1298  move 20 00 00 0.4
+ 1299  move 10 00 00 0.8
+ 1300  move 10 00 00 0.2
+ 1301  move 20 00 00 0.3
+ 1302  move 10 00 00 0.2
+ 1303  move 20 00 00 0.3
+ 1304  move 20 00 00 0.5
+ 1305  move 10 00 00 0.8
+ 1306  move 00 02 00 4
+ 1307  move 20 00 00 0.5; move 00 01 00 2; move 00 02 0.3; move 10 00 00 1
+ 1308  move 0 02 00 3
+ 1309  move 20 00 00 0.5; move 00 01 00 2; move 00 02 0.3; sleep 1; move 10 00 00 1
+ 1310  move 0 02 00 2
+ 1311  move 20 00 00 0.5; move 00 01 00 2; move 00 02 00 0.3; sleep 1; move 10 00 00 1
+ 1312  move 00 01 00 3
+ 1313  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.5; move 00 01 00 2; move 00 02 00 0.3; sleep 1; move 10 00 00 1
+ 1314  move 00 01 00 2
+ 1315  move 20 00 00 0.1
+ 1316  move 10 00 00 0.1
+ 1317  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 0.3; sleep 1; move 10 00 00 2
+ 1318  move 00 01 00 2
+ 1319  move 20 00 00 0.1
+ 1320  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 0.6; sleep 1; move 10 00 00 2
+ 1321  move 00 01 00 2
+ 1322  move 20 00 00 0.1
+ 1323  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 1; sleep 1; move 10 00 00 2
+ 1324  move 00 01 00 2
+ 1325  move 00 01 00 0.5
+ 1326  move 20 00 00 0.1
+ 1327  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 1.5; sleep 1; move 10 00 00 2
+ 1328  shutdown -h now
+ 1329  cd work/lincoln/owi-arm/
+ 1330  history
+ 1331  move 00 02 00 3
+ 1332  move 00 01 00 6
+ 1333  move 40 00 00 1
+ 1334  move 20 00 00 1
+ 1335  move 10 00 00 1
+ 1336  move 02 00 00 1
+ 1337  move 01 00 00 1
+ 1338  move 01 00 00 0.1
+ 1339  move 00 01 00 0.1
+ 1340  move 10 00 00 0.1
+ 1341  move 20 00 00 0.3; sleep 0.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 1.5; sleep 1; move 10 00 00 0.2; move 10 00 00 1
+ 1342  move 00 01 00 2
+ 1343  move 20 00 00 0.4; sleep 1.5; move 10 00 00 0.6; move 00 02 00 4.5; move 20 00 00 0.8; move 00 01 00 2; move 00 02 00 1.5; sleep 1; move 10 00 00 0.2; move 10 00 00 1
+ 1344  move 00 01 00 2
+ 1345  move 20 00 00 0.3
+ 1346  move 10 00 00 0.3
+ 1347  move 10 00 00 0.1
+ 1348  move 20 00 00 0.4; sleep 1.5; move 10 00 00 0.6; move 00 02 00 5.5; move 20 00 00 0.8; move 00 01 00 3; move 00 02 00 1.5; sleep 1; move 10 00 00 0.2; move 10 00 00 1
+ 1349  shutdown -h now
+ 1350  cd work/lincoln/owi-ar
+ 1351  cd work/lincoln/owi-arm/
+ 1352  clear
+ 1353  move 02 00 00 1
+ 1354  move 01 00 00 1
+ 1355  move 01 00 00 0.1
+ 1356  move 10 00 00 0.5
+ 1357  move 10 00 00 0.2
+ 1358  move 00 01 00 1.2
+ 1359  move 00 01 00 0.6
+ 1360  history
+ 1361  history >art
+ 1362  vi art
+ 1363  chmod 755 art
+ 1364  move 20 00 00 0.1
+ 1365  art
+ 1366  cat art
+ 1367  move 00 01 00 2.8
+ 1368  move 00 01 00 0.6
+ 1369  move 00 01 00 0.4
+ 1370  history
+ 1371  vi art
+ 1372  move 10 00 00 0.1
+ 1373  move 01 00 00 0.1
+ 1374  clear
+ 1375  shutdown -h now
+ 1376  ls
+ 1377  cd work/lincoln/owi-arm/
+ 1378  ls
+ 1379  more fs.correct
+ 1380  move 40 00 00 2
+ 1381  move 01 00 00 1
+ 1382  move 01 00 00 0.1
+ 1383  move 20 00 00 0.1
+ 1384  move 40 00 00 0.1
+ 1385  move 80 00 00 0.1
+ 1386  move 10 00 00 0.1
+ 1387  move 40 00 00 0.1
+ 1388  move 80 00 00 1
+ 1389  move 80 00 00 0.1
+ 1390  move 10 00 00 0.1
+ 1391  move 40 00 00 0.1
+ 1392  move 80 00 00 0.1
+ 1393  move 02 00 00 0.1
+ 1394  art
+ 1395  move 80 00 00 0.1
+ 1396  move 02 00 00 0.1
+ 1397  move 01 00 00 0.1
+ 1398  move 10 00 00 0.1
+ 1399  move 01 00 00 0.1
+ 1400  vi art
+ 1401  art
+ 1402  ../camera/takepic
+ 1403  xdg-open test.jpg
+ 1404  more ../camera/takepic
+ 1405  raspistill -vf -hf -n -t 1 -o test.jpg
+ 1406  xdg-open test.jpg
+ 1407  move 40 00 00 1
+ 1408  move 20 00 00 1
+ 1409  fs.correct 50 37
+ 1410  cd ../board
+ 1411  ls
+ 1412  getboard
+ 1413  clear
+ 1414  getboard
+ 1415  clear
+ 1416  getboard
+ 1417  shutdown -h now
+ 1418  cd work/lincoln/owi-arm/
+ 1419  ../camera/takepic test.jpg
+ 1420  cd work/lincoln/owi-arm/
+ 1421  ../camera/takepic test.jpg
+ 1422  xdg-open test.jpg
+ 1423  move 00 01 00 1
+ 1424  move 04 00 00 0.1
+ 1425  cd ..
+ 1426  ls
+ 1427  more README
+ 1428  cd ..
+ 1429  more README
+ 1430  ls
+ 1431  cat BACKUP
+ 1432  chmod 755 BACKUP
+ 1433  ./BAKCUP
+ 1434  ./BACKUP 
+ 1435  ls -al
+ 1436  gzip lincoln.tar
+ 1437  ls -al
+ 1438  rm lincoln.tar.gz 
+ 1439  cd lincoln/owi-arm/
+ 1440  ls
+ 1441  clear
+ 1442  ls
+ 1443  ls ex*jpg
+ 1444  rm ex*jpg
+ 1445  ls
+ 1446  more txt-\: 
+ 1447  rm txt-\: 
+ 1448  more z
+ 1449  rm z
+ 1450  ls
+ 1451  move 00 01 00 0.1
+ 1452  move 00 02 00 0.1
+ 1453  move 00 01 00 1
+ 1454  move 40 00 00 1
+ 1455  move 20 00 00 1
+ 1456  move 08 00 00 1
+ 1457  move 00 02 00 0.1
+ 1458  move 00 02 00 0.5
+ 1459  move 00 01 00 0.5
+ 1460  move 00 02 00 0.5
+ 1461  move 00 01 00 0.5
+ 1462  move 00 02 00 0.5
+ 1463  move 00 02 00 1.5
+ 1464  move 00 02 00 0.5
+ 1465  move 90 00 00 0.5
+ 1466  move 60 00 00 0.5
+ 1467  move 40 00 00 0.5
+ 1468  move 60 00 00 0.5
+ 1469  move 40 00 00 0.5
+ 1470  move 60 00 00 0.5
+ 1471  move 08 00 00 0.5
+ 1472  move 04 00 00 0.5
+ 1473  move 08 00 00 0.5
+ 1474  cd work/lincoln/owi-arm/
+ 1475  move 00 01 00 0.5
+ 1476  cd work/lincoln/owi-arm/
+ 1477  move 08 00 00 0.5
+ 1478  move 40 00 00 0.5
+ 1479  move 08 00 00 0.5
+ 1480  move 40 00 00 0.5
+ 1481  move 20 00 00 0.5
+ 1482  move 02 00 00 0.5
+ 1483  move 80 00 00 0.5
+ 1484  move 10 00 00 0.5
+ 1485  move 80 00 00 0.5
+ 1486  fs.correct 50 37
+ 1487  fs.correct 80 20
+ 1488  fs.correct 20 20
+ 1489  move 00 02 00 3
+ 1490  fs.correct 30 20
+ 1491  move 00 02 00 0.4
+ 1492  fs.correct 20 20; fs.correct 20 20; move 01 00 00 1; sleep 1; move 01 00 00 0.1; move 10 00 00 1; move 02 00 00 1
+ 1493  shutdown -h now
+ 1494  move 20 00 00 0.5
+ 1495  cd work/lincoln/owi-arm/
+ 1496  move 20 00 00 0.5
+ 1497  fs.correct
+ 1498  fs.correct 50 37
+ 1499  fs.correct 20 20
+ 1500  fs.correct 20 37
+ 1501  move 00 02 00 1
+ 1502  move 00 01 00 1
+ 1503  move 20 00 00 0.4
+ 1504  move 80 00 00 0.2
+ 1505  move 40 00 00 0.4
+ 1506  move 80 00 00 0.2
+ 1507  move 08 00 00 0.5
+ 1508  move 04 00 00 0.5
+ 1509  move 04 00 00 0.1
+ 1510  move 08 00 00 0.1
+ 1511  move 10 00 00 0.5
+ 1512  move 10 00 00 0.2
+ 1513  move 00 01 00 1
+ 1514  move 00 02 00 3
+ 1515  ../camera/takepic
+ 1516  ../camera/takepic test.jpg
+ 1517  xdg-open test.jpg
+ 1518  fs.correct 50 50
+ 1519  fs.correct 50 30
+ 1520  move 10 00 00 1
+ 1521  move 00 01 00 1.2
+ 1522  move 00 01 00 0.4
+ 1523  move 00 01 00 0.1
+ 1524  move 20 00 00 1
+ 1525  move 01 00 00 1
+ 1526  move 00 00 00 1
+ 1527  move 00 02 00 3
+ 1528  move 00 02 00 0.2
+ 1529  move 00 02 00 0.1
+ 1530  move 20 00 00 0.3
+ 1531  move 
+ 1532  move 10 00 00 0.4
+ 1533  move 00 01 00 0.6
+ 1534  history
+ 1535  fs.correct 50 30; move 10 00 00 1; move 00 01 00 1.7; move 20 00 00 1; move 01 00 00 1; move 00 02 00 3.5; move 20 00 00 0.3; move 02 00 00 1; move 10 00 00 0.4; move 00 01 00 1.1
+ 1536  fs.correct 50 30; move 10 00 00 1; move 00 01 00 1.7; move 20 00 00 1; move 01 00 00 1; move 10 00 00 1; move 00 02 00 3.5; move 20 00 00 0.3; move 02 00 00 1; move 10 00 00 0.4; move 00 01 00 1.1
+ 1537  move 00 00 00 01
+ 1538  move 00 02 00 3
+ 1539  move 20 00 00 3
+ 1540  fs.correct 50 30; move 10 00 00 1; move 00 01 00 1.7; move 20 00 00 1; move 01 00 00 1; move 10 00 00 1; move 00 02 00 3.5; move 20 00 00 0.3; move 02 00 00 1; move 10 00 00 0.4; move 00 01 00 1.1
+ 1541  history >fs.movepawn
+ 1542  vi fs.movepawn
+ 1543  chmod 755 fs.movepawn 
+ 1544  fs.movepawn
+ 1545  vi fs.movepawn
+ 1546  fs.movepawn
+ 1547  vi fs.movepawn
+ 1548  fs.movepawn
+ 1549  vi fs.movepawn
+ 1550  fs.movepawn
+ 1551  vi fs.movepawn
+ 1552  fs.movepawn
+ 1553  vi fs.movepawn
+ 1554  fs.movepawn
+ 1555  vi fs.movepawn
+ 1556  fs.movepawn
+ 1557  vi fs.movepawn 
+ 1558  fs.movepawn
+ 1559  vi fs.movepawn 
+ 1560  move 01 00 00 0.1
+ 1561  fs.movepawn
+ 1562  vi fs.movepawn 
+ 1563  fs.movepawn
+ 1564  shutdown -h now
+ 1565  cd work/lincoln/owi-arm/
+ 1566  ls
+ 1567  more TTT
+ 1568  clear
+ 1569  ls
+ 1570  more art
+ 1571  clear
+ 1572  ls
+ 1573  cd ../board
+ 1574  ls
+ 1575  more getboard
+ 1576  more mydgt
+ 1577  ls mydgt
+ 1578  getboard
+ 1579  ls
+ 1580  getboard
+ 1581  more getboard 
+ 1582  getboard
+ 1583  cd ../owi-arm/
+ 1584  ls
+ 1585  ../camera/takepic test.jpg
+ 1586  xdg-open test.jpg
+ 1587  ls
+ 1588  more kmeans
+ 1589  ls
+ 1590  more median
+ 1591  ls
+ 1592  more move
+ 1593  more p1
+ 1594  move 00 01 00 3
+ 1595  move 00 01 00 0.6
+ 1596  move 00 01 00 0.3
+ 1597  move 20 00 00 1
+ 1598  move 10 00 00 0.4
+ 1599  move 01 00 00 0.4
+ 1600  move 01 00 00 0.1
+ 1601  move 10 00 00 0.1
+ 1602  move 10 00 00 1
+ 1603  move 02 00 00 1
+ 1604  move 00 01 00 1.5
+ 1605  move 00 02 00 3
+ 1606  move 00 02 00 0.4
+ 1607  move 00 01 00 0.2
+ 1608  move 00 02 00 0.1
+ 1609  move 20 00 00 0.5
+ 1610  move 40 00 00 0.5
+ 1611  move 10 00 00 0.5
+ 1612  move 80 00 00 0.5
+ 1613  move 40 00 00 0.5
+ 1614  move 10 00 00 0.5
+ 1615  move 80 00 00 0.5
+ 1616  move 01 00 00 0.5
+ 1617  move 40 00 00 0.5
+ 1618  move 20 00 00 0.3
+ 1619  move 01 00 00 0.3
+ 1620  move 01 00 00 0.1
+ 1621  move 40 00 00 0.1
+ 1622  move 40 00 00 1
+ 1623  move 02 00 00 1
+ 1624  move 00 02 00 1
+ 1625  move 90 00 00 1
+ 1626  move 10 00 00 1
+ 1627  move 90 00 00 1
+ 1628  move 10 00 00 1
+ 1629  move 90 00 00 1
+ 1630  move 20 00 00 0.1
+ 1631  move 40 00 00 0.1
+ 1632  move 20 00 00 0.1
+ 1633  move 10 00 00 0.1
+ 1634  move 00 01 00 0.1
+ 1635  move 01 00 00 0.1
+ 1636  move 01 00 00 0.5
+ 1637  move 01 00 00 0.1
+ 1638  move 01 00 00 0.3
+ 1639  move 40 00 00 0.3
+ 1640  move 02 00 00 0.3
+ 1641  move 40 00 00 0.3
+ 1642  move 00 02 00 5
+ 1643  move 00 02 00 2
+ 1644  move 02 00 00 0.3
+ 1645  move 00 01 00 1
+ 1646  move 20 00 00 1
+ 1647  move 01 00 00 1
+ 1648  move 01 00 00 0.1
+ 1649  move 40 00 00 0.3
+ 1650  move 02 00 00 0.3
+ 1651  move 01 00 00 0.3
+ 1652  move 00 01 00 1
+ 1653  move 90 00 00 1
+ 1654  move 10 00 00 1
+ 1655  move 90 00 00 1
+ 1656  move 80 00 00 0.2
+ 1657  move 40 00 00 0.2
+ 1658  move 00 01 00 0.2
+ 1659  move 40 00 00 0.2
+ 1660  move 20 00 00 0.2
+ 1661  move 90 00 00 0.1
+ 1662  move 10 00 00 0.1
+ 1663  move 90 00 00 0.1
+ 1664  move 10 00 00 0.1
+ 1665  move 90 00 00 0.2
+ 1666  move 40 00 00 0.2
+ 1667  move 20 00 00 0.2
+ 1668  move 40 00 00 0.2
+ 1669  move  00 00 0.2
+ 1670  move 40 00 00 0.2
+ 1671  move 20 00 00 0.2
+ 1672  move 40 00 00 0.2
+ 1673  move 20 00 00 0.2
+ 1674  move 20 00 00 0.1
+ 1675  move 10 00 00 0.1
+ 1676  move 00 02 00 0.1
+ 1677  move 10 00 00 0.1
+ 1678  move 80 00 00 0.1
+ 1679  move 10 00 00 0.1
+ 1680  move 80 00 00 0.1
+ 1681  move 10 00 00 0.1
+ 1682  move 80 00 00 0.05
+ 1683  move 02 00 00 0.05
+ 1684  move 40 00 00 0.2
+ 1685  move 00 01 00 0.2
+ 1686  fs.correct
+ 1687  cd work/lincoln/owi-arm/
+ 1688  fs.correct
+ 1689  fs.correct 50 37
+ 1690  fs.correct 20 20
+ 1691  fs.correct 80 20
+ 1692  ../board/getboard
+ 1693  cd ../board
+ 1694  getboard
+ 1695  cd ../owi-arm/
+ 1696  move 0 2 0 1
+ 1697  move 0 1 0 1
+ 1698  move 0 1 0 5
+ 1699  move 0 1 0 2
+ 1700  move 0 1 0 1
+ 1701  fs.correct 50 37
+ 1702  shutdown -h now
+ 1703  cd work/lincoln/owi-arm/
+ 1704  move 00 02 00 0.3
+ 1705  cd work/lincoln/owi-arm/
+ 1706  move 00 02 00 0.2
+ 1707  move 00 01 00 0.2
+ 1708  move 80 00 00 1
+ 1709  move 10 00 00 1
+ 1710  move 08 00 00 1
+ 1711  move 20 00 00 1
+ 1712  move 10 00 00 1
+ 1713  move 20 00 00 1
+ 1714  move 40 00 00 1
+ 1715  shutdown -h now
+ 1716  cd work/lincoln/owi-arm/
+ 1717  lsusb
+ 1718  move 00 02 00 0.2
+ 1719  ls
+ 1720  more owi.cc
+ 1721  ls
+ 1722  more README
+ 1723  g++ -lusb-1.0 owi.cc -o owi2.o
+ 1724  cp owi.cc owi2.cc
+ 1725  g++ -lusb-1.0 owi2.cc -o owi2.o
+ 1726  vi owi2.cc
+ 1727  cat mvoe
+ 1728  cat move
+ 1729  sudo ./owi.0 00 02 00; sleep 0.3; sudo ./owi.o 00 00 00
+ 1730  sudo ./owi.o 00 02 00; sleep 0.3; sudo ./owi.o 00 00 00
+ 1731  h
+ 1732  history
+ 1733  g++ -lusb-1.0 owi2.cc -o owi2.o
+ 1734  sudo ./owi2.o 00 02 00; sleep 0.3; sudo ./owi2.o 00 00 00
+ 1735  vi owi2.cc
+ 1736  g++ -lusb-1.0 owi2.cc -o owi2.o
+ 1737  sudo ./owi2.o 00 02 00; sleep 0.3; sudo ./owi2.o 00 00 00
+ 1738  vi owi2.cc
+ 1739  g++ -lusb-1.0 owi2.cc -o owi2.o
+ 1740  sudo ./owi2.o 00 02 00; sleep 0.3; sudo ./owi2.o 00 00 00
+ 1741  sudo ./owi.o 00 02 00; sleep 0.3; sudo ./owi.o 00 00 00
+ 1742  sudo ./owi2.o 00 02 00; sleep 0.3; sudo ./owi2.o 00 00 00
+ 1743  sudo ./owi.o 00 02 00; sleep 0.3; sudo ./owi.o 00 00 00
+ 1744  ls
+ 1745  vi README
+ 1746  ls
+ 1747  vi TTT
+ 1748  shudown -h now
+ 1749  shutdown -h now
+ 1750  cd work/lincoln/owi-arm/
+ 1751  move 02 00 00 0.5
+ 1752  cp move move2
+ 1753  vi move2
+ 1754  move2 02 00 00 0.5
+ 1755  move 02 00 00 0.5
+ 1756  move 80 0 0 2
+ 1757  move 80 0 0 0.5
+ 1758  move 01 0 0 0.6
+ 1759  move 01 0 0 0.1
+ 1760  move 40 0 0 2
+ 1761  move 02 0 0 1
+ 1762  move2 01 00 00 1
+ 1763  move 80 0 0 0.5
+ 1764  move 40 0 0 0.5
+ 1765  move 80 0 0 0.1
+ 1766  move 01 0 0 0.1
+ 1767  move 01 0 0 0.4
+ 1768  move 01 0 0 0.1
+ 1769  move 40 0 0 1
+ 1770  move 80 0 0 0.6
+ 1771  move 02 0 0 0.6
+ 1772  move 80 0 0 0.05
+ 1773  move 01 0 0 0.7
+ 1774  move 02 0 0 0.7
+ 1775  move 01 0 0 1
+ 1776  move 40 00 00 0.4
+ 1777  move 02 00 00 1
+ 1778  move 80 00 00 0.2
+ 1779  move 01 00 00 1
+ 1780  move 01 00 00 0.1
+ 1781  move 40 00 00 0.4
+ 1782  move 40 02 00 0.4
+ 1783  move 40 01 00 0.4
+ 1784  move 80 00 00 2
+ 1785  move 00 01 00 0.4
+ 1786  move 00 02 00 0.4
+ 1787  move 10 00 00 0.4
+ 1788  move 90 00 00 0.4
+ 1789  move20 00 00 0.4
+ 1790  move 20 00 00 0.4
+ 1791  move 02 00 00 0.8
+ 1792  move 40 00 00 0.4
+ 1793  move2 80 00 00 0.4
+ 1794  move2 02 00 00 0.4
+ 1795  move2 80 00 00 0.4
+ 1796  move2 90 00 00 0.4
+ 1797  move2 00 01 00 0.1
+ 1798  move2 02 00 00 0.4
+ 1799  move2 90 00 00 0.4
+ 1800  move2 01 00 00 0.6
+ 1801  move2 01 00 00 0.1
+ 1802  move 40 00 00 0.4
+ 1803  move2 40 00 00 0.4
+ 1804  move2 00 01 00 0.4
+ 1805  move 00 01 00 0.4
+ 1806  move 00 01 00 0.4; move2 00 02 00 0.6
+ 1807  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 02 00 0.3; move 20 01 00 0.2
+ 1808  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 02 00 0.3; move2 20 01 00 0.2
+ 1809  move 00 02 00 0.4; move2 00 01 00 0.6; move 80 02 00 0.3; move2 20 01 00 0.2
+ 1810  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.3; move2 10 01 00 0.2
+ 1811  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.3; move2 10 01 00 0.6
+ 1812  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 02 00 0.3; move2 20 01 00 0.2
+ 1813  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.3; move2 10 01 00 0.6
+ 1814  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 02 00 0.3; move2 20 01 00 0.2
+ 1815  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.7; move2 10 01 00 1
+ 1816  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 02 00 0.3; move2 20 01 00 0.2
+ 1817  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.7; move2 10 01 00 1
+ 1818  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 01 00 0.3; move2 20 02 00 0.2
+ 1819  move 00 01 00 2; move2 00 02 00 2
+ 1820  move2 00 02 00 2
+ 1821  move 00 01 00 2; sleep 1; move2 00 02 00 2
+ 1822  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 01 00 0.3; move2 20 02 00 0.2
+ 1823  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.7; move2 10 01 00 1
+ 1824  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 01 00 0.3; move2 20 02 00 0.2
+ 1825  move 00 02 00 0.4; move2 00 01 00 0.6; move 40 02 00 0.7; move2 10 01 00 1
+ 1826  move 00 01 00 0.4; move2 00 02 00 0.6; move 80 01 00 0.3; move2 20 02 00 0.2
+ 1827  history
+ 1828  history >duet
+ 1829  vi duet
+ 1830  chmod 755 duet
+ 1831  ./duet
+ 1832  move2 02 00 00 1
+ 1833  move2 80 00 00 2
+ 1834  move2 40 00 00 1
+ 1835  move2 00 02 00 1
+ 1836  fs.correct 50 37
+ 1837  cat move
+ 1838  sudo ./owi.o 00 00 01
+ 1839  duet
+ 1840  move 80 00 00 1
+ 1841  duet
+ 1842  move 02 00 00 0.2
+ 1843  move2 02 00 00 0.2
+ 1844  move 02 00 00 0.2
+ 1845  move2 02 00 00 0.2
+ 1846  move2 00 02 00 4
+ 1847  move2 40 00 00 3
+ 1848  move2 20 00 00 2
+ 1849  vi move
+ 1850  fs.correct
+ 1851  fs.correct 50 37
+ 1852  fs.correct 20 20
+ 1853  vi fs.correct
+ 1854  fs.correct 20 20
+ 1855  fs.correct 80 20
+ 1856  cat fs.correct
+ 1857  xdg-open board2.jpg
+ 1858  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+ 1859  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+ 1860  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | head
+ 1861  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | awk ' { a[i++]=$2; } END {printf("*\n")}'
+ 1862  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+ 1863  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'
+ 1864  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |sort -n | more
+ 1865  vi fs.correct
+ 1866  convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' |awk '{print $2}' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'
+ 1867  vi fs.correct
+ 1868  fs.correct 50 37
+ 1869  fs.correct 85 20
+ 1870  fs.correct 10 10
+ 1871  vi fs.correct
+ 1872  mv move move1
+ 1873  vi move1
+ 1874  move 00 02 00 1
+ 1875  move1 00 02 00 1
+ 1876  move2 00 02 00 1
+ 1877  fs.correct 50 37 2
+ 1878  move2 00 02 0.7
+ 1879  move2 00 02 0 0.7
+ 1880  move2 00 02 0 0.3
+ 1881  move2 90 00 0 1.5
+ 1882  move2 90 00 0 1
+ 1883  move2 90 00 0 0.2
+ 1884  move2 10 00 0 0.2
+ 1885  move2 00 01 0 0.2
+ 1886  move2 01 00 0 0.7
+ 1887  move2 01 00 0 0.1
+ 1888  move2 02 00 0 0.1
+ 1889  move2 60 00 0 1
+ 1890  fs.correct 50 37 2
+ 1891  history
+ 1892  move2 00 02 0 1.7
+ 1893  move2 00 01 0 0.4
+ 1894  move2 00 01 0 0.2
+ 1895  move2 10 00 0 1
+ 1896  move2 80 00 0 1
+ 1897  move2 10 00 0 1
+ 1898  move2 80 00 0 0.3
+ 1899  history
+ 1900  move2 40 00 0 0.6
+ 1901  move2 20 00 0 0.5
+ 1902  move2 40 00 0 2
+ 1903  move2 20 00 0 0.5
+ 1904  move2 00 01 0 1.2
+ 1905  fs.correct 50 37 2
+ 1906  move2 00 02 00 1.2; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1; move2 80 0 0 0.3; move2 40 0 0 0.6; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 1.2
+ 1907  fs.correct 50 37 2
+ 1908  move2 00 02 00 1.2; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1; move2 80 0 0 1; sleep 2; move2 40 0 0 0.6; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 1.2
+ 1909  fs.correct 50 37 2
+ 1910  move2 00 02 00 1.2; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 1.2; sleep 2; move2 40 0 0 0.6; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 1.2
+ 1911  fs.correct 50 37 2
+ 1912  move2 40 0 0 0.6
+ 1913  move2 40 0 0 0.3
+ 1914  fs.correct 50 37 2
+ 1915  move2 00 02 00 1.2; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 1; sleep 2; move2 40 0 0 1; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 1.2
+ 1916  fs.correct 50 37 2
+ 1917  move2 40 0 0 0.3
+ 1918  fs.correct 50 37 2
+ 1919  move2 00 02 00 1.2; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 1; sleep 2; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 0 1 0 1.2
+ 1920  move2 02 00 00 0.5
+ 1921  fs.correct 50 37 2
+ 1922  move2 00 02 00 1.1; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 1; sleep 2; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 0 1 0 1.1
+ 1923  fs.correct 50 37 2
+ 1924  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 1; sleep 2; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 0 1 0 1.0
+ 1925  fs.correct 50 37 2
+ 1926  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 0.7; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 0 1 0 2.0; move2 02 0 0 0.7; move2 0 2 0 1
+ 1927  fs.correct 50 37 2
+ 1928  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 1.2; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 0 1 0 2.0; move2 02 0 0 0.7; move2 0 2 0 1; fs.correct 50 37 2
+ 1929  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 1.2; move2 40 0 0 1.5; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 2.0; move2 02 0 0 0.7; move2 0 2 0 1; fs.correct 50 37 2
+ 1930  move2 80 0 0 0.5
+ 1931  move2 20 0 0 0.5
+ 1932  fs.correct 50 37 2
+ 1933  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 1.2; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 2.0; move2 02 0 0 0.7; move2 0 2 0 1; fs.correct 50 37 2
+ 1934  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 1.2; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 2.0; move2 02 0 0 0.7; move2 0 2 0 1; move 20 0 0 0.1; fs.correct 50 37 2
+ 1935  move2 00 02 00 1.0; move2 10 0 0 1; move2 80 0 0 1; move2 10 0 0 1.3; move2 80 0 0 0.7; move2 01 00 00 1.2; move2 40 0 0 1.3; move2 20 0 0 0.5; move2 40 0 0 1.2; move2 20 0 0 0.5; move2 0 1 0 4.0; move2 02 0 0 0.7; move2 0 2 0 3; move 20 0 0 0.2; fs.correct 50 37 2
+ 1936  move2 40 0 0 3
+ 1937  move2 20 0 0 2
+ 1938  fs.correct 50 37 2
+ 1939  shutdown -h now
+ 1940  cd work/lincoln/owi-arm/
+ 1941  shutdown -h now
+ 1942  cd work/lincoln/owi-arm
+ 1943  ls
+ 1944  ls ../camera/takepic
+ 1945  cat ../camera/takepic
+ 1946  ../camera/takepic test.jpg
+ 1947  xdg-open test.jpg
+ 1948  ../camera/takepic test.jpg
+ 1949  xdg-open test.jpg
+ 1950  exit
+ 1951  cd work/lincoln
+ 1952  cd owi-arm/
+ 1953  move 00 00 01 01
+ 1954  ./move 00 00 01 01
+ 1955  ls
+ 1956  ./move1 00 00 01 01
+ 1957  ./move1 00 00 01 05
+ 1958  xdg-open test.jpg
+ 1959  xdg-open board2.jpg
+ 1960  display board2.jpg
+ 1961  vi fs.correct
+ 1962  display board2.jpg
+ 1963  bg
+ 1964  xdg-close
+ 1965  cat xdg-close
+ 1966  top
+ 1967  ps -u pi
+ 1968  ps -u pi | more
+ 1969  cat xdg-close
+ 1970  sudo kill -9 'ps -e | grep display | awk '{print$1}'`
+ 1971  sudo kill -9 `ps -e | grep display | awk '{print$1}'`
+ 1972  vi fs.correct
+ 1973  vi xdg-close
+ 1974  clear
+ 1975  convert board2.jpg -fuzz 15% -fill red -opaque write board5.jpg; display board5.jpg
+ 1976  convert board2.jpg -fuzz 15% -fill red -opaque white board5.jpg; display board5.jpg
+ 1977  convert board2.jpg -fuzz 15% -fill red -opaque whblack oard5.jpg; display board5.jpg
+ 1978  convert board2.jpg -fuzz 15% -fill red -opaque black board5.jpg; display board5.jpg
+ 1979  history >>fs.correct
+ 1980  vi fs.correct
+ 1981  fs.correct 50 37
+ 1982  kill %1
+ 1983  fs.correct 50 37 1
+ 1984  kill %2
+ 1985  jobs
+ 1986  kill %2
+ 1987  kill -9 %2
+ 1988  sudo kill %2
+ 1989  jobs
+ 1990  move1 00 00 02 0.1
+ 1991  move2 00 00 02 0.1
+ 1992  move1 00 00 02 0.1
+ 1993  move1 00 00 02 0.4
+ 1994  cd work/lincoln/owi-arm/
+ 1995  ls
+ 1996  move1 00 02 00 0.5
+ 1997  vi fs.correct
+ 1998  fs.correct 50 37 1
+ 1999  kill %1
+ 2000  jobs
+ 2001  kill %1
+ 2002  jobs
+ 2003  vi fs.correct
+ 2004  xdg-open test.jpg
+ 2005  cat xdg-open
+ 2006  vi fs.correct
+ 2007  fs.correct 50 37 1
+ 2008  vi fs.correct
+ 2009  fs.correct 50 37 1
+ 2010  kill %1
+ 2011  vi fs.correct
+ 2012  fs.correct 50 37 1
+ 2013  vi fs.correct
+ 2014  fs.correct 50 37 1
+ 2015  fs.correct 80 80 1
+ 2016  move1 20 00 00 0.5
+ 2017  xdg-close
+ 2018  vi fs.correct
+ 2019  fs.correct 80 20 1
+ 2020  vi fs.correct
+ 2021  man display
+ 2022  display -size 50x50 test.jpg
+ 2023  display -size 50 50 test.jpg
+ 2024  display -size 50x50 board2.jpg
+ 2025  display -size 20x20 board2.jpg
+ 2026  man display
+ 2027  display -size 20x20 -support 1 board2.jpg
+ 2028  man display
+ 2029  display board.jpg
+ 2030  xdg-open board.jpg
+ 2031  man display
+ 2032  display -resize 20x20 board2.jpg
+ 2033  display -resize 100x75 test.jpg
+ 2034  display board2.jpg
+ 2035  vi fs.correct
+ 2036  fs.correct 80 20 1
+ 2037  kill %2
+ 2038  vi fs.correct
+ 2039  fs.correct 80 20 1
+ 2040  man kill
+ 2041  fs.correct 20 37 1
+ 2042  vi fs.correct
+ 2043  fs.correct 50 37 1
+ 2044  vi fs.correct
+ 2045  fs.correct 50 37 1
+ 2046  move1 10 00 00 1
+ 2047  move1 00 02 00 1
+ 2048  duet
+ 2049  move 00 00 00 1
+ 2050  move1 00 00 00 1
+ 2051  move2 00 00 00 1
+ 2052  move2 20 00 00 4
+ 2053  move2 00 02 00 4
+ 2054  move2 20 00 00 2
+ 2055  move1 10 00 00 1
+ 2056  move2 10 00 00 1
+ 2057  cat duet
+ 2058  vi duet
+ 2059  duet
+ 2060  move2 00 00 00 1
+ 2061  move1 00 00 00 1
+ 2062  move1 00 01 00 1
+ 2063  move1 20 01 00 1
+ 2064  duet
+ 2065  move1 40 01 00 1
+ 2066  move1 80 01 00 1
+ 2067  move1 80 02 00 1
+ 2068  move1 10 02 00 1
+ 2069  duet
+ 2070  move2 20 00 0 1
+ 2071  move1 20 00 0 1
+ 2072  duet
+ 2073  move2 00 02 0 3
+ 2074  move1 00 01 0 3
+ 2075  duet
+ 2076  move1 80 00 00 2
+ 2077  move2 80 00 00 2
+ 2078  move1 00 02 00 0.2
+ 2079  move1 40 00 00 0.2
+ 2080  move1 20 00 00 0.2
+ 2081  fs.correct 50 37 1
+ 2082  vi fs.correct
+ 2083  display -resize 100.75 board2.jpg
+ 2084  vi fs.correct
+ 2085  ls
+ 2086  fs.correct 50 15 1
+ 2087  fs.correct 20 20  1
+ 2088  fs.correct 50 37  1
+ 2089  move1 00 02 00 1
+ 2090  move1 20 00 00 0.4
+ 2091  move1 01 00 00 1
+ 2092  move1 02 00 00 1
+ 2093  history
+ 2094  fs.correct 50 37 1; move1 00 02 00 1; move 20 00 00 0.4; move 01 00 00 1; move 02 00 00 1
+ 2095  fs.correct 50 37 1; move1 00 02 00 1; move1 20 00 00 0.4; move1 01 00 00 1; move1 02 00 00 1
+ 2096  fs.correct 50 37 1; move1 00 02 00 1; move1 20 00 00 0.6; move1 01 00 00 1; move1 02 00 00 1
+ 2097  fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.6; move1 01 00 00 1; move1 10 00 00 0.5; move1 02 00 00 1
+ 2098  fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.6; move1 01 00 00 1.5; move1 10 00 00 0.5; move1 02 00 00 1
+ 2099  fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.4; move1 01 00 00 1.7; move1 10 00 00 0.5; move1 02 00 00 1
+ 2100  fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.4; move1 01 00 00 1.5; move1 10 00 00 0.5; move1 00 01 00 2.5; move1 02 00 00 1
+ 2101  fs.correct 50 37 1; fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.4; move1 01 00 00 1.5; move1 10 00 00 0.5; move1 00 01 00 2.5; move1 02 00 00 1
+ 2102  fs.correct 50 37 1; fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.4; move1 01 00 00 1.5; move1 10 00 00 0.5; move1 00 01 00 2.5; move1 20 00 00 0.4; move1 02 00 00 1; move1 10 00 00 1
+ 2103  fs.correct 50 37 1; fs.correct 50 37 1; move1 00 02 00 1.2; move1 20 00 00 0.4; move1 01 00 00 1.5; move1 10 00 00 0.5; move1 00 01 00 2.5; move1 20 00 00 0.2; move1 02 00 00 1; move1 10 00 00 1
+ 2104  history >zzz

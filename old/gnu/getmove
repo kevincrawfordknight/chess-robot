@@ -1,0 +1,12 @@
+
+# using gnuchess, returns best move from a given position (EPD format).
+#
+# input is in $1 (e.g., input.epd)
+# output move comes on stdout.
+# also creates output .epd file $2.
+#
+# note that this does not check the input.epd file!  it must be well-formed.
+
+rm -f $2
+printf "solveepd $1\nepdsave $2\nquit\n" | gnuchess | grep -a 'My move is'
+

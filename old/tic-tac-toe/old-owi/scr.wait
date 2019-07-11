@@ -1,0 +1,15 @@
+
+while [ 1 ]; do
+    scr.analyze >scr.analyze.res
+    echo `tail -1 scr.analyze.res`
+    DIFF=`cat scr.analyze.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=0} {if ($0=="P") a++; else if ($0=="B") a--} END {printf("%d\n",a)}'`
+    TOTAL=`cat scr.analyze.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=9} {if ($0=="-") a--} END {printf("%d\n",a)}'`
+    echo $DIFF
+    if [ "$DIFF" -eq 0 ]
+    then break 
+    fi
+    if [ "$TOTAL" -eq 9 ]
+    then break
+    fi
+done  
+

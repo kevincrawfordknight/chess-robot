@@ -1,0 +1,8 @@
+
+
+DESTRANK=7
+SOURCEPIECE="P"
+
+if [ "$DESTRANK" == 8 ] && [ "$SOURCEPIECE" == "P" ]; then
+  echo yeah
+fi

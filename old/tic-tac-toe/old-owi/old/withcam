@@ -1,0 +1,10 @@
+
+for i in 1 2 3 4
+do
+  sudo ./move 10 00 00 0.5
+  sudo kill -9 `ps -e | grep gpicview | awk '{print $1}'`
+  ../camera/takepic z.jpg
+  xdg-open z.jpg
+  sleep 2
+done
+sudo kill -9 `ps -e | grep gpicview | awk '{print $1}'`

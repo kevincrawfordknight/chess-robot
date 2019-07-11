@@ -1,0 +1,29 @@
+
+# repeatable pick and place
+# orient to dot (85,20), pick up object, orient to dot (20,20), drop object
+# then move it back.
+
+fs.correct 85 20 1 
+fs.correct 85 20 1 
+move1 20 00 00 0.1 
+move1 01 00 00 1.1 
+move1 10 00 00 1 
+
+fs.correct 20 20 1 
+move1 20 00 00 0.2 
+move1 02 00 00 1 
+move1 10 00 00 0.5
+move1 00 02 00 1.2 
+
+fs.correct 20 20 1 
+move1 20 00 00 0.1 
+move1 01 00 00 1.1 
+move1 10 00 00 0.7 
+
+fs.correct 85 20 1 
+fs.correct 85 20 1 
+move1 20 00 00 0.1 
+move1 02 00 00 1 
+move1 10 00 00 0.5 
+move1 00 01 00 1
+

@@ -1,0 +1,11 @@
+
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+do
+  xdg-open ex$i.jpg
+  convert ex$i.jpg -resize 100 -fuzz 40\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+  X1=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | awk '{a+=$1;b+=1} END {print int(a/b)}'`
+  Y1=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | awk '{a+=$2;b+=1} END {print int(a/b)}'`
+  echo 'ex'$i'.jpg   x='$X1'  y='$Y1
+  xdg-close ex$i.jpg
+done
+

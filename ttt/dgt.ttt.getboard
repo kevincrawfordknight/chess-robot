@@ -1,0 +1,13 @@
+
+# echo '- - - - O - - - X'
+
+timeout 2 cat /dev/ttyUSB0
+
+getboard/kk4.o | 
+awk '(NR>3)&&(NR<7)' | 
+awk '{printf("%s",substr($0,12,5))} END {printf("\n")}' | 
+tr -d '|' | 
+tr ' ' '-' | 
+sed 's/./& /g' | 
+tr 'Pp' 'XO'
+

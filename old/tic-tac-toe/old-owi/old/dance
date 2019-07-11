@@ -1,0 +1,17 @@
+
+# make robot arm dance around
+
+OWI='sudo ./move'
+
+for j in 1 2
+do
+  for i in 1 2 3 
+  do
+    $OWI 11 00 01 1
+    $OWI 22 00 01 1
+  done
+  $OWI 00 01 01 2
+done
+$OWI 10 02 00 2
+$OWI 00 02 00 3
+

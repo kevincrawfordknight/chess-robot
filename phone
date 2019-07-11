@@ -1,0 +1,21 @@
+
+# first do "home"!
+
+aplay -d 22 phone.wav &
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+
+#./moveto 185.073760986 237.744247437 62.5815505981 274.807983398
+./moveto 185.07409668 244.636535645 68.7631912231 274.807983398
+./moveto 185.526428223 246.983505249 69.6874084473 274.807800293
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 30 30
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -10 0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 10 0 0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -25 -25
+
+#./moveto 185.07409668 244.636535645 68.7631912231 274.807983398
+./moveto 185.073760986 237.744247437 62.5815505981 274.807983398
+
+rosservice call /m1n4s200_driver/in/home_arm

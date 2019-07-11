@@ -1,0 +1,7 @@
+
+# moved into fixed position from virtually any (shoulder+elbow) position.
+#    % fixpos <REDFUZZ> <GREENFUZZ>
+
+fs.correct.x.rg 53 xx 1 $1 $2
+fs.shoulder.elbow red $1 green $2
+

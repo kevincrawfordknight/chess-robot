@@ -1,0 +1,21 @@
+
+# practice grab blue piece 
+
+fs.correct.x.rg 51 xx 1 $1 $2
+fs.correct.x.rg 51 xx 1 $1 $2
+move1 90 0 0 0.5
+move1 10 0 0 0.2
+DIST=0
+while [ $DIST -lt 31 ]; do
+  move1 90 0 0 0.15
+  fs.correct.y xx 57 1 green $2
+  DIST=`fs.rg.dist 38 $2 | tail -1 | awk '{print $NF}'`  # 38 for shadows
+  echo 'dist = '$DIST
+done
+move1 1 0 0 1
+sleep 0.5
+move1 10 0 0 1
+move1 60 0 0 2
+move1 2 0 0 1
+move1 0 2 0 0.3
+

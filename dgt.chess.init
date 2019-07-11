@@ -1,0 +1,5 @@
+
+NEUTRAL='273.87121582 190.305557251 47.2733459473 180.027954102'
+moveto $NEUTRAL
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70

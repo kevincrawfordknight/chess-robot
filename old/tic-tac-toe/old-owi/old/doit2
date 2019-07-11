@@ -1,0 +1,11 @@
+
+# put pawn on wood block
+# start shoulder-up, elbow 90 degrees, wrist down
+
+sudo ./move 00 02 00 2.0
+sudo ./move 80 00 00 1.0
+sudo ./move 01 00 00 1.5
+sudo ./move 40 00 00 1.0
+sudo ./move 00 01 00 2.0
+sudo ./move 02 00 00 1.0
+sudo ./move 40 00 00 0.2

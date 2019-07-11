@@ -1,0 +1,10 @@
+
+# makes a move
+# % scr.makemove 7 35 20
+
+echo 'calling makemove '$1 $2 $3
+
+scr.grabpiece $2 $3
+move1 60 1 0 3.6
+move1 90 0 0 1.5
+scr.place $1 $2 $3

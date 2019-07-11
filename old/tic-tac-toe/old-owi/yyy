@@ -1,0 +1,9 @@
+
+# from viewboard2, go grab blue piece from off board
+
+move1 0 2 0 2.6
+move1 90 0 0 2
+fs.correct.x.rg 48 xx 1 $1 $2
+move1 90 0 0 1.5
+
+fs.rg.dist 28 20

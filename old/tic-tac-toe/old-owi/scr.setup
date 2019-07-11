@@ -1,0 +1,5 @@
+
+# get into setup position
+
+fs.correct.x.rg 53 xx 1 $1 $2
+scr.viewboard2 $1 $2

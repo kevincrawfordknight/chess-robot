@@ -1,0 +1,63 @@
+
+# How to control the OWI Robotic Arm Edge.
+
+A guy wrote a Linux driver for OWI Robotic Arm Edge:
+
+  notbrainsurgery.livejournal.com/38622.html
+
+It works great!
+
+To get "owi.cc" to compile:
+
+% sudo apt-get install libusb-1.0-0-dev
+% pkg-config --libs libusb-lusb-1.0
+% g++ -lusb-1.0 owi.cc -o owi.o
+
+It can find the robot arm USB port by itself, using the manufacturer's info.
+
+To turn on light:
+  % owi.o 00 00 01
+
+To turn off light:
+  % owi.o 00 00 00
+
+Once robot is ordered to move, it just keeps moving!  Be ready with:
+  % owi.o 00 00 00
+to stop all motors! 
+
+Commands:
+
+First byte: 00: still, 01:up/close, 10:down/open
+
+shoulder elbow wrist grip
+  00      00    00    00  = 00 (all stop)
+  01      00    00    00  = 40 (shoulder up)
+  10      00    00    00  = 80 (shoulder down)
+  00      01    00    00  = 10 (elbow up)
+  00      10    00    00  = 20 (elbow down)
+  00      00    01    00  = 04 (wrist up)
+  00      00    10    00  = 08 (wrist down)
+  00      00    00    01  = 01 (grip close)
+  00      00    00    10  = 02 (grip open)
+  00      10    00    10  = 22 (elbow down & grip open)
+  00      01    00    01  = 11 (elbow up & grip close)
+
+Second byte:
+  00 (rotate stop) 
+  01 (rotate clockwise)   
+  02 (rotate counter-clockwise)
+
+Third byte:
+  00 (light off)     
+  01 (light on)
+
+I created a script "move1" to include a time parameter.  E.g.:
+
+  % move1 10 00 00 1    /* raise elbow for one second, then stop */
+
+I also accounted for when two robot arms are plugged into the same Pi, by
+modifying the way owi.cc searches for the arm.  I created owi2.cc and move2:
+
+  % owi2.o 00 00 01     /* turn on light of second arm */
+  % move2 00 00 00 1    /* turn it on for one second */
+

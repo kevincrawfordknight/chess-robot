@@ -1,0 +1,2 @@
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20

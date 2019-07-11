@@ -1,0 +1,15 @@
+
+#sleep 2
+#./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#' | sed 's/#|.*//' | wc -w
+
+### RUN home FIRST! ###
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -2 86 12 0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 40 40
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15  0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 15 15 0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -40 -40
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -10 -10 0
+rosservice call /m1n4s200_driver/in/home_arm
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100

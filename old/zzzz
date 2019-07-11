@@ -1,0 +1,21 @@
+
+SOURCE=2
+
+PIECE1='1 1'
+PIECE2='2 2'
+PIECE3='3 3'
+PIECE4='4 4'
+PIECE5='5 5'
+
+if [[ $SOURCE == "1" ]]
+   then echo $PIECE1
+ elif [[ $SOURCE == "2" ]]
+   then echo $PIECE2 
+ elif [[ $SOURCE == "3" ]]
+   then echo $PIECE3 
+ elif [[ $SOURCE == "4" ]]
+   then echo $PIECE4 
+ elif [[ $SOURCE == "5" ]]
+   then echo $PIECE5 
+fi
+

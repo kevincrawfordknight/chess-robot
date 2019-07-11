@@ -1,0 +1,5 @@
+
+cat <<EOF | stockfish
+position fen 8/6QK/8/8/1b6/kp6/1p6/8 w KQkq -
+go depth 20
+EOF

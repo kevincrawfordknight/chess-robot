@@ -1,0 +1,45 @@
+
+# move both shoulder and elbow to establish specific distance between 
+# red and green objects
+#
+# fs.shoulder.elbow red 40 green 22
+
+for i in 1 2 3 4 5 6 7
+do
+
+fs.correct.y xx 37 1 $1 $2
+
+../camera/takepic board.jpg
+display board.jpg&
+
+convert board.jpg -fuzz $2% -fill cyan +opaque $1 -colorspace GRAY -posterize 2 -fuzz 15% -fill $1 -opaque black board3.jpg
+display board3.jpg&
+
+X1=`convert board3.jpg txt:- | grep -v 'FFFFFF' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+convert board.jpg -fuzz $4\% -fill cyan +opaque $3 -colorspace GRAY -posterize 2 -fuzz 15% -fill $3 -opaque black board3.jpg
+display board3.jpg&
+
+X2=`convert board3.jpg txt:- | grep -v 'FFFFFF' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+X3=`echo $X2 - $X1 | bc`
+
+echo '*** x-red    = '$X1
+echo '*** x-green  = '$X2
+echo '*** dist     = '$X3
+
+xdg-close
+
+if [ "$X3" -lt 21 ] 
+  then move1 90 00 00 3.0
+elif [ "$X3" -lt 27 ] 
+  then move1 90 00 00 2.0
+elif [ "$X3" -lt 31 ] 
+  then move1 90 00 00 0.6
+elif [ "$X3" -lt 39 ] 
+  then move1 90 00 00 0.3
+else 
+  break
+fi
+
+done

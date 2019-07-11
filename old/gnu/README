@@ -1,0 +1,28 @@
+
+Commands for interfacing with gnuchess.
+
+For example:
+
+% ./showboard input.epd
+r . b q . r . k 
+p . p n b p p . 
+. p . . p . . . 
+. . . . . . p . 
+. . . P B . . . 
+. . . . . N . . 
+P P P Q . P P P 
+. . K R . . . R 
+
+% ./getmove input.epd output/epd 
+My move is : Bxa8
+
+% ./showboard output.epd
+B . b q . r . k 
+p . p n b p p . 
+. p . . p . . . 
+. . . . . . p . 
+. . . P . . . . 
+. . . . . N . . 
+P P P Q . P P P 
+. . K R . . . R 
+

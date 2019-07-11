@@ -1,0 +1,18 @@
+
+
+SOURCEPIECE=$1
+
+if [[ $SOURCEPIECE == "N" ]]; then
+  A=25
+else A=20
+fi
+
+echo $A
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- $A $A
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -4 -4
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20

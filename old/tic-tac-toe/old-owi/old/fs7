@@ -1,0 +1,94 @@
+
+#=======================================================================
+# Center robot "gaze" on the red spot in the environment.   If the red 
+# spot is in a known position, for example, this serves to orient the 
+# robot into a known position (before it executes some recipe movement).
+#
+# Method (for each axis): 
+#   Find coord of dot in camera image.
+#   Rotate X seconds toward the dot.
+#   Find coord of dot in camera image again.
+#   Estimate how many more seconds to rotate (& direction) to reach dot.
+#   Rotate again toward the dot.
+#   Report final coord of dot in camera image.  
+#
+# Actually, we can more flexibly can "put the red spot" at any
+# x/y coordinate in the image gaze, not just the center.
+#=======================================================================
+
+XGOAL=50     # goal coordinates for red spot in image/gaze
+YGOAL=37     #
+SEC=1        # how many seconds for initial move
+ALPHA=0.8    # compensate for gravity pulling elbow down
+
+#==================================================
+# take picture, determine x-coord of red spot
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+
+convert board.jpg -resize 100 -fuzz 30\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+xdg-open board2.jpg
+
+# might want X1 to be median of red-dot-pixels, instead of mean:
+
+X1=`convert board2.jpg txt:- | grep '000000' | sed 's/,.*//' | awk '{a+=$1;b+=1} END {print int(a/b)}'`
+
+echo '*** x1='$X1
+
+#==================================================
+# rotate shoulder in direction of red spot
+#==================================================
+
+if [ "$X1" -lt "$XGOAL" ]
+  then move 00 02 00 $SEC
+  else move 00 01 00 $SEC
+fi
+
+#==================================================
+# take another picture
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+
+#==================================================
+# determine new x-coord of red spot
+#==================================================
+
+convert board.jpg -resize 100 -fuzz 30\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+X2=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | awk '{a+=$1;b+=1} END {print int(a/b)}'`
+
+echo '*** x2='$X2
+
+#==================================================
+# figure out how much to move shoulder & move it
+#==================================================
+
+if [ "$X1" -gt "$X2" ] && [ "$X2" -gt "$XGOAL" ]
+  then move 00 01 00 `echo "($X2-$XGOAL)/($X1-$X2)" | bc -l`
+  elif [ "$X1" -gt "$XGOAL" ] && [ "$XGOAL" -gt "$X2" ]
+    then move 00 02 00 `echo "($XGOAL-$X2)/($X1-$X2)" | bc -l`
+  elif [ "$XGOAL" -gt "$X2" ] && [ "$X2" -gt "$X1" ]
+    then move 00 02 00 `echo "($XGOAL-$X2)/($X2-$X1)" | bc -l`
+  elif [ "$X2" -gt "$XGOAL" ] && [ "$XGOAL" -gt "$X1" ]
+    then move 00 01 00 `echo "($X2-$XGOAL)/($X2-$X1)" | bc -l`
+fi
+
+#==================================================
+# take another picture
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+
+#==================================================
+# determine final x-coord of red spot
+#==================================================
+
+convert board.jpg -resize 100 -fuzz 35\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+X3=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | awk '{a+=$1;b+=1} END {print int(a/b)}'`
+
+echo '*** x3='$X3
+

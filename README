@@ -1,0 +1,44 @@
+
+To do:
+
+1. Faulty moves
+
+- Queen d5g8 still drives into board!
+- also, Queen h8xf8 (after capture)
+- after capture, picking up rook at a8 drives fingers into board.
+
+- rook a1b1 didn't work well.  also rook b1xb2.  also rook e1d1.
+
+2. Allow human to pick up a piece and hold it for a while
+
+3. String waypoints together for smooth, non-stop movement
+
+4. Increase arm speed
+
+5. Machine should recognize when it is checkmated & not move (or knock over its king?).
+
+   dgt.chess.decide seems to return 'a1a1' for both lost and stalemated positions.
+
+6. Machine should recognize when it has won & celebrate
+
+7. Push pieces without picking them up
+
+   it would be good to push pieces in the x,y plane rather than pick them up, especially pawns.
+   first, slight vertical raise:
+
+     % rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 0 -0.008 0 0 0
+
+   need to modify all fourth joint angles to be exactly 180, to avoid wrist spinning!
+
+   also need to calculate a little x offset because y movements are not straight
+
+8. Currently freezes if human player has moved but his king remains in check
+
+9. White pawn promotion isn't working yet
+   
+   not sure what will happen, need to try makemove with engine's move
+
+10. Add random "thinking time" before robot's move.
+
+11. Change up the opening!
+

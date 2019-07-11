@@ -1,0 +1,7 @@
+
+daytime
+  - lighting1 coming in from window
+  - lighting2 same, plus neon lamp
+  
+  - both analyses wrong!
+  - both use blue 35%, purple 15%

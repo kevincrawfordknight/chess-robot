@@ -1,0 +1,21 @@
+g++ -pthread kk.c -o kk.o
+sudo kk.o
+
+for ubuntu, changed some fprintf to fputs
+
+also:
+
+Create a file called something like 66-tty.rules in /etc/udev/rules.d. Add the line:
+   KERNEL=="ttyUSB*",MODE="0666"
+The next time the device is plugged in, it will pick up the correct permissions.
+
+===
+
+ 2170  ./kk4.o                DIDN'T WORK
+ 2171  more README
+ 2172  cat /dev/ttyUSB0
+ 2173  ls -al /dev/ttyUSB0
+ 2174  cat README
+ 2175  ls
+ 2177  ./kk4.o                WORKED
+

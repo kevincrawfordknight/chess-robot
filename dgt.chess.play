@@ -1,0 +1,117 @@
+
+# Plays complete game of chess with Kinova robot.
+#
+# dgt.chess.play (this file) is the main loop of the game.
+# dgt.chess.getboard puts current position into dgt.chess.pos (.epd format)
+# dgt.chess.decide computes out the next move (algebraic notation)
+# dgt.chess.init places robot arm in neutral position.
+# dgt.chess.makemove <move> executes chess move (algebraic notation)
+
+#
+# Move to NEUTRAL position, put grippers into ready position
+#
+
+NEUTRAL='273.87121582 190.305557251 47.2733459473 180.027954102'
+moveto $NEUTRAL
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+while [ 1 ]; do
+
+#
+# Pick opening move (used if board in start position)
+#
+
+  R=`echo $RANDOM%8 | bc`
+  if [ "$R" -eq 0 ]; then OPENING="e2e4"
+  elif [ "$R" -eq 1 ]; then OPENING="d2d4"
+  elif [ "$R" -eq 2 ]; then OPENING="d2d3"
+  elif [ "$R" -eq 3 ]; then OPENING="b1c3"
+  elif [ "$R" -eq 4 ]; then OPENING="g1f3"
+  elif [ "$R" -eq 5 ]; then OPENING="g2g3"
+  elif [ "$R" -eq 6 ]; then OPENING="c2c4"
+  else OPENING="f2f4"
+  fi
+
+#
+# Load current position
+#
+
+  echo 'robot deciding on move...'
+  dgt.chess.getboard dgt.chess.pos
+  cat dgt.chess.pos
+
+#
+# If start position, use $OPENING, otherwise calculate move
+#
+
+  START=`diff dgt.chess.pos dgt.chess.startpos | wc -l`
+  if [ "$START" -eq 0 ]; then MOVE=$OPENING
+  else MOVE=`dgt.chess.decide dgt.chess.pos | awk '{printf("%s",substr($0,1,4))}'`
+  fi
+
+#
+# Robot execute move
+#
+
+  echo '*!*'$MOVE'*!*'
+
+  echo 'robot making move...'
+  if [ "$MOVE" = "a1a1" ] || [ "$MOVE" = "" ]; then
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+    rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+    dgt.chess.getboard dgt.chess.nextpos
+  else
+    dgt.chess.makemove $MOVE dgt.chess.pos  ### also sets dgt.chess.nextpos
+  fi
+  cat dgt.chess.nextpos | sed 's/ b .*/ w - -/' >dgt.chess.pos1
+  echo 'robot move completed, waiting for human move...'
+
+#
+# Take phone call
+#
+
+R=`echo $RANDOM%100 | bc`
+if [ "$R" -eq 0 ]; then dgt.chess.phone
+fi
+
+#
+# Await human move
+#
+# dgt.chess.pos1 = position recorded just after robot's move
+# dgt.chess.pos2 = position after a human re-positioning
+# dgt.chess.posnow = position just recorded
+# CHANGED = whether last recorded position differed from pos1
+
+  CHANGED=0
+  echo '' > dgt.chess.pos2
+  while [ 1 ]; do
+    dgt.chess.getboard dgt.chess.posnow
+    echo 'dgt.chess.pos1' `cat dgt.chess.pos1`
+    echo 'dgt.chess.pos2' `cat dgt.chess.pos2`
+    echo 'dgt.chess.posnow' `cat dgt.chess.posnow`
+    A=`diff dgt.chess.posnow dgt.chess.pos1 | wc -c`
+    B=`diff dgt.chess.posnow dgt.chess.pos2 | wc -c`
+    if [ "$CHANGED" == 0 ] && [ "$A" -ne 0 ]; then
+      echo "%%% DID 1"
+      CHANGED=1 
+      cp dgt.chess.posnow dgt.chess.pos2
+    elif [ "$CHANGED" == 1 ] && [ "$B" == 0 ]; then
+      echo "%%% DID 2"
+      break
+    elif [ "$CHANGED" == 1 ] && [ "$A" == 0 ]; then
+      echo "%%% DID 3"
+      CHANGED=0
+      echo '' > dgt.chess.pos2
+    elif [ "$CHANGED" == 1 ] && [ "$A" != 0 ]; then
+      echo "%%% DID 4"
+      cp dgt.chess.posnow dgt.chess.pos2
+    fi
+    sleep 2
+  done  
+done  
+

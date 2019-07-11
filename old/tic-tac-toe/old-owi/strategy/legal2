@@ -1,0 +1,96 @@
+
+# produces strategy.txt
+
+echo 'a' | awk '{for (i1=1;i1<=3;i1++) for (i2=1;i2<=3;i2++) for (i3=1;i3<=3;i3++) for (i4=1;i4<=3;i4++) for (i5=1;i5<=3;i5++) for (i6=1;i6<=3;i6++) for (i7=1;i7<=3;i7++) for (i8=1;i8<=3;i8++) for (i9=1;i9<=3;i9++) printf("%d %d %d %d %d %d %d %d %d\n",i1,i2,i3,i4,i5,i6,i7,i8,i9)}' | 
+
+awk '{a=0;b=0;for (i=1; i<=9; i++) {if ($i=="1") a++; if ($i=="2") b++} if (a==b) printf("%s\n",$0)}' | 
+
+tr '123' 'OX-' |
+
+grep 'X$' | 
+
+awk '{ \
+for (i=1;i<=9;i++) a[i]=$i;  
+printf("%s ",$0); 
+blank=0; 
+for (i=1;i<=9;i++) if (a[i]=="-") blank++; 
+if (((a[1]=="X")&&(a[2]=="X")&&(a[3]=="X"))||
+    ((a[4]=="X")&&(a[5]=="X")&&(a[6]=="X"))||
+    ((a[7]=="X")&&(a[8]=="X")&&(a[9]=="X"))||
+    ((a[1]=="X")&&(a[5]=="X")&&(a[9]=="X"))||
+    ((a[3]=="X")&&(a[5]=="X")&&(a[7]=="X"))||
+    ((a[1]=="X")&&(a[4]=="X")&&(a[7]=="X"))||
+    ((a[2]=="X")&&(a[5]=="X")&&(a[8]=="X"))||
+    ((a[3]=="X")&&(a[6]=="X")&&(a[9]=="X")))
+  printf("W\n"); 
+else if (((a[1]=="O")&&(a[2]=="O")&&(a[3]=="O"))||
+         ((a[4]=="O")&&(a[5]=="O")&&(a[6]=="O"))||
+         ((a[7]=="O")&&(a[8]=="O")&&(a[9]=="O"))||
+         ((a[1]=="O")&&(a[5]=="O")&&(a[9]=="O"))||
+         ((a[3]=="O")&&(a[5]=="O")&&(a[7]=="O"))||
+         ((a[1]=="O")&&(a[4]=="O")&&(a[7]=="O"))||
+         ((a[2]=="O")&&(a[5]=="O")&&(a[8]=="O"))||
+         ((a[3]=="O")&&(a[6]=="O")&&(a[9]=="O"))) 
+  printf("L\n"); 
+else if (blank==1) {for (i=1;i<=9;i++) if (a[i]=="-") go=i; printf("%d\n",go)}
+else if (((a[1]=="-")&&(a[2]=="X")&&(a[3]=="X"))||((a[1]=="-")&&(a[5]=="X")&&(a[9]=="X"))||((a[1]=="-")&&(a[4]=="X")&&(a[7]=="X"))) printf("1\n");
+else if (((a[1]=="X")&&(a[2]=="-")&&(a[3]=="X"))||((a[2]=="-")&&(a[5]=="X")&&(a[8]=="X"))) printf("2\n");
+else if (((a[1]=="X")&&(a[2]=="X")&&(a[3]=="-"))||((a[3]=="-")&&(a[5]=="X")&&(a[7]=="X"))||((a[3]=="-")&&(a[6]=="X")&&(a[9]=="X"))) printf("3\n");
+else if ((a[4]=="-")&&(a[5]=="X")&&(a[6]=="X")) printf("4\n");
+else if ((a[4]=="X")&&(a[5]=="-")&&(a[6]=="X")) printf("5\n");
+else if ((a[4]=="X")&&(a[5]=="X")&&(a[6]=="-")) printf("6\n");
+else if ((a[7]=="-")&&(a[8]=="X")&&(a[9]=="X")) printf("7\n");
+else if ((a[7]=="X")&&(a[8]=="-")&&(a[9]=="X")) printf("8\n");
+else if ((a[7]=="X")&&(a[8]=="X")&&(a[9]=="-")) printf("9\n");
+else if ((a[1]=="X")&&(a[5]=="-")&&(a[9]=="X")) printf("5\n");
+else if ((a[1]=="X")&&(a[5]=="X")&&(a[9]=="-")) printf("9\n");
+else if ((a[3]=="X")&&(a[5]=="-")&&(a[7]=="X")) printf("5\n");
+else if ((a[3]=="X")&&(a[5]=="X")&&(a[7]=="-")) printf("7\n");
+else if ((a[1]=="X")&&(a[4]=="-")&&(a[7]=="X")) printf("4\n");
+else if ((a[1]=="X")&&(a[4]=="X")&&(a[7]=="-")) printf("7\n");
+else if ((a[2]=="X")&&(a[5]=="-")&&(a[8]=="X")) printf("5\n");
+else if ((a[2]=="X")&&(a[5]=="X")&&(a[8]=="-")) printf("8\n");
+else if ((a[3]=="X")&&(a[6]=="-")&&(a[9]=="X")) printf("6\n");
+else if ((a[3]=="X")&&(a[6]=="X")&&(a[9]=="-")) printf("9\n");
+else if (((a[1]=="-")&&(a[2]=="O")&&(a[3]=="O"))||((a[1]=="-")&&(a[5]=="O")&&(a[9]=="O"))||((a[1]=="-")&&(a[4]=="O")&&(a[7]=="O"))) printf("1\n");
+else if (((a[1]=="O")&&(a[2]=="-")&&(a[3]=="O"))||((a[2]=="-")&&(a[5]=="O")&&(a[8]=="O"))) printf("2\n");
+else if ((a[1]=="O")&&(a[2]=="O")&&(a[3]=="-")) printf("3\n");
+else if ((a[4]=="-")&&(a[5]=="O")&&(a[6]=="O")) printf("4\n");
+else if ((a[4]=="O")&&(a[5]=="-")&&(a[6]=="O")) printf("5\n");
+else if ((a[4]=="O")&&(a[5]=="O")&&(a[6]=="-")) printf("6\n");
+else if ((a[7]=="-")&&(a[8]=="O")&&(a[9]=="O")) printf("7\n");
+else if ((a[7]=="O")&&(a[8]=="-")&&(a[9]=="O")) printf("8\n");
+else if ((a[7]=="O")&&(a[8]=="O")&&(a[9]=="-")) printf("9\n");
+else if ((a[1]=="O")&&(a[5]=="-")&&(a[9]=="O")) printf("5\n");
+else if ((a[1]=="O")&&(a[5]=="O")&&(a[9]=="-")) printf("9\n");
+else if ((a[3]=="-")&&(a[5]=="O")&&(a[7]=="O")) printf("3\n");
+else if ((a[3]=="O")&&(a[5]=="-")&&(a[7]=="O")) printf("5\n");
+else if ((a[3]=="O")&&(a[5]=="O")&&(a[7]=="-")) printf("7\n");
+else if ((a[1]=="O")&&(a[4]=="-")&&(a[7]=="O")) printf("4\n");
+else if ((a[1]=="O")&&(a[4]=="O")&&(a[7]=="-")) printf("7\n");
+else if ((a[2]=="O")&&(a[5]=="-")&&(a[8]=="O")) printf("5\n");
+else if ((a[2]=="O")&&(a[5]=="O")&&(a[8]=="-")) printf("8\n");
+else if ((a[3]=="-")&&(a[6]=="O")&&(a[9]=="O")) printf("3\n");
+else if ((a[3]=="O")&&(a[6]=="-")&&(a[9]=="O")) printf("6\n");
+else if ((a[3]=="O")&&(a[6]=="O")&&(a[9]=="-")) printf("9\n");
+else if (a[5]=="-") printf("5\n");
+else if ($0=="O X O - X - - O X") printf("4\n");
+else if ($0=="O X - X O O - - X") printf("7\n");
+else if ($0=="O X - X O - - O X") printf("3\n");
+else if ($0=="O X - - O - X O X") printf("6\n");
+else if ($0=="O X - - O - - - X") printf("3\n");
+else if ($0=="O X - - X O - O X") printf("7\n");
+else if ($0=="O - X X O O - - X") printf("8\n");
+else if ($0=="O - - X O - - - X") printf("3\n");
+else if ($0=="O - - X X O O - X") printf("8\n");
+else if ($0=="O - - X X O - O X") printf("3\n");
+else if ($0=="O - - - X O - - X") printf("7\n");
+else if ($0=="O - - - X - - O X") printf("3\n");
+else if ($0=="- X O - O - X O X") printf("4\n");
+else if ($0=="- X - X O O - O X") printf("1\n");
+else if ($0=="- X - - O - - O X") printf("3\n");
+else if ($0=="- - X X O O O - X") printf("2\n");
+else if ($0=="- - - X O O - - X") printf("7\n");
+else if ($0=="- - - - O - - - X") printf("1\n");
+else printf("U\n")}'
+

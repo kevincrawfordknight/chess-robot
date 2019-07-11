@@ -1,0 +1,19 @@
+
+# Robot $1 holds a red die & moves it around "randomly".
+# Robot $2 uses its camera to track the red die.
+
+for i in 1 2 3
+do
+  move$1 00 02 00 0.4
+  fs.correct.fast 50 20 $2
+  move$1 00 01 00 0.8
+  fs.correct.fast 50 20 $2
+  move$1 10 01 00 0.3
+  fs.correct.fast 50 20 $2
+  move$1 20 02 00 0.4
+  move$1 00 02 00 0.4
+  fs.correct.fast 50 20 $2
+done
+move$1 00 02 00 1
+move$1 10 00 00 0.7
+

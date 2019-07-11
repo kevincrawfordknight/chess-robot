@@ -1,0 +1,29 @@
+
+# Place piece on specified board location.
+# Robot must already be holding the piece.
+# % scr.place <PLACE> <REDFUZZ> <GREENFUZZ>
+
+SLEEP=0
+
+if [ $1 == "1" ]
+   then echo 1
+  elif [ $1 == "2" ]
+   then echo 2
+  elif [ $1 == "3" ]
+   then echo 3
+  elif [ $1 == "4" ]
+   then echo 4
+  elif [ $1 == "5" ]
+   then echo 5 
+  elif [ $1 == "6" ]
+   then echo 6 
+  elif [ $1 == "7" ]
+   then echo 7
+  elif [ $1 == "8" ]
+   then echo 8
+  elif [ $1 == "9" ]
+   then echo 9
+  else echo 'Need to supply an argument 1-9.'
+fi
+
+

@@ -1,0 +1,28 @@
+sudo ./owi.o 00 00 00
+sudo ./owi.o B8 00 00
+sleep 4
+sudo ./owi.o 00 00 01
+sudo ./owi.o 20 00 01
+sleep 1
+sudo ./owi.o 00 00 01
+sudo ./owi.o 01 00 01
+sleep 1
+sudo ./owi.o 00 00 01
+sudo ./owi.o 40 00 01
+sleep 2
+sudo ./owi.o 00 00 01
+sudo ./owi.o 80 00 01
+sleep 2
+sudo ./owi.o 00 00 01
+sudo ./owi.o 02 00 01
+sleep 1
+sudo ./owi.o 00 00 01
+sudo ./owi.o 10 00 01
+sleep 1
+sudo ./owi.o 00 00 01
+sudo ./owi.o 54 00 01
+sleep 3
+sudo ./owi.o 00 00 01
+sudo ./owi.o 40 00 00
+sleep 1
+sudo ./owi.o 00 00 00

@@ -1,0 +1,10 @@
+
+SOURCE=2
+
+PIECE[1]='1 1'
+PIECE[2]='2 2'
+PIECE[3]='3 3'
+PIECE[4]='4 4'
+PIECE[5]='5 5'
+
+echo ${PIECE[$SOURCE]}

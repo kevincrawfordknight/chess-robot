@@ -1,0 +1,7 @@
+
+echo $1
+
+if [[ $1 == "1" ]]
+  then echo 'got it'
+fi
+

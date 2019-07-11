@@ -1,0 +1,34 @@
+
+# Plays complete game of tic-tac-toe with Kinova robot.
+#
+# dgt.ttt.play (this file) is the main loop of the game.
+# dgt.ttt.getboard returns something like '- - - - - - - O X'
+# dgt.ttt.init places robot arm in neutral position.
+# dgt.ttt.makemove <N> <M> executes the (M-1)st move by placing next 
+#   available piece into location <N>.
+
+MOVE=9
+TOTAL=0
+
+./dgt.ttt.init
+
+while [ $TOTAL -lt 9 ]; do
+  ./dgt.ttt.makemove $MOVE $TOTAL
+  while [ 1 ]; do
+    ./dgt.ttt.getboard >dgt.ttt.getboard.res
+    DIFF=`cat dgt.ttt.getboard.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=0} {if ($0=="X") a++; else if ($0=="O") a--} END {printf("%d\n",a)}'`
+    TOTAL=`cat dgt.ttt.getboard.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=9} {if ($0=="-") a--} END {printf("%d\n",a)}'`
+    if [ "$DIFF" -eq 0 ]
+    then break 
+    fi
+    if [ "$TOTAL" -eq 9 ]
+    then break
+    fi
+  done  
+  MOVE=`cat dgt.ttt.getboard.res | grep -f - dgt.ttt.strategy | awk '{print substr($0,length($0),1)}'`
+  echo $MOVE
+  if [ "$TOTAL" -eq 2 ]
+  then ./dgt.ttt.phone
+  fi
+done  
+

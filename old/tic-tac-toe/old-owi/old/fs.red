@@ -1,0 +1,20 @@
+
+#==================================================
+# take picture, determine x-coord of red spot
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+display -resize 100x75 board.jpg&
+
+convert board.jpg -resize 100 -fuzz 40\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+convert board2.jpg -fuzz 15% -fill red -opaque black board3.jpg
+display board3.jpg&
+
+X1=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** x1='$X1
+
+Y1=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | awk '{print $2}' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** y1='$Y1
+

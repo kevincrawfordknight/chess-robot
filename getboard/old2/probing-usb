@@ -1,0 +1,1040 @@
+
+In one terminal window:
+
+% echo "A" > /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+
+In another terminal window:
+
+% od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+
+SEND:
+
+(note!  ascii A = hex 0x41)
+
+@ -> put board in idle mode
+A -> returns fixed amount of binary data
+B -> returns fixed amount of binary data
+C -> returns constantly updating binary data, including board changes
+D -> returns fixed amount of binary data whenever board changes
+E -> returns serial number of chessboard (14563)
+F -> nothing
+G -> returns "This DGT board is produced ..."
+H -> nothing
+I -> huge amount of constantly updating binary / kills terminal window
+
+SEE:
+
+http://svn.lirec.eu/scenarios/MyFriend/Watching2Players/iCatChess/ElectronicBoard/dgtbrd13.h
+
+===========
+
+echo "0x42" | xxd -r -p >/dev/ttyUSB0
+
+returns board position!
+
+find part that starts with "206 0 C".
+after that, the next 64 numbers are the pieces.
+
+% unbuffer od -A n -t x1 /dev/ttyUSB0 > dgtboard &
+% echo "0x42" | xxd -r -p >/dev/ttyUSB0
+% tail -17 dgtboard
+ 1064  ls
+ 1065  cd ..
+ 1066  ls
+ 1067  cd dgtnix-1.9.1/
+ 1068  ls
+ 1069  utils/dgtnixTest
+ 1070  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1071  ls
+ 1072  more utils/dgtnixTest.cpp
+ 1073  python utils/dgtnixTest.py 
+ 1074  python utils/dgtnixTest.py /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1075  cd utils
+ 1076  ls
+ 1077  dgtnixTest-dgtnixTest.o
+ 1078  ./dgtnixTest-dgtnixTest.o
+ 1079  sudo ./dgtnixTest-dgtnixTest.o
+ 1080  chmod 755 ./dgtnixTest-dgtnixTest.o
+ 1081  ls -al
+ 1082  ls
+ 1083  more ./dgtnixTest
+ 1084  ls
+ 1085  more ./dgtnixTest
+ 1086  ls
+ 1087  ./dgtnixTest
+ 1088  ./dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1089  vi dgtnixTest
+ 1090  ls
+ 1091  more dgthello.cpp
+ 1092  ls
+ 1093  pwd
+ 1094  make
+ 1095  more Makefile
+ 1096  cd ..
+ 1097  ls
+ 1098  cd ..
+ 1099  ls
+ 1100  cd ..
+ 1101  mkdir lincoln3
+ 1102  ls
+ 1103  cd ..
+ 1104  ls
+ 1105  mv lincoln2/lincoln3 .
+ 1106  cd lincoln3
+ 1107  ls
+ 1108  gunzip dgtnix-1.9.1.tar.gz 
+ 1109  tar -xvf dgtnix-1.9.1.tar 
+ 1110  ls
+ 1111  cd dgtnix-1.9.1/
+ 1112  ls
+ 1113  more INSTALL
+ 1114  ./configure
+ 1115  make
+ 1116  make check
+ 1117  ls
+ 1118  vi utils/dgtnixTest.cpp
+ 1119  ls src
+ 1120  vi src/dgtnix.c
+ 1121  cd ..
+ 1122  make
+ 1123  ls
+ 1124  cd dgtnix-1.9.1/
+ 1125  ls
+ 1126  make
+ 1127  vi src/dgtnix.c
+ 1128  make
+ 1129  vi utils/dgtnixTest.cpp
+ 1130  make
+ 1131  make install
+ 1132  make check
+ 1133  make install
+ 1134  ls src
+ 1135  sudo make install
+ 1136  ls src
+ 1137  ls utils
+ 1138  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1139  ls
+ 1140  ls src
+ 1141  grep stdlib src/*
+ 1142  clear
+ 1143  ls
+ 1144  pwd
+ 1145  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1146  diff src/dgtnix.c ../../lincoln2/board/dgtnix-1.9.1/src/dgtnix.c 
+ 1147  diff src/dgtnix.c ../../lincoln2/board/dgtnix-1.9.1/src/dgtnix.c  | more
+ 1148  ls
+ 1149  more NEWS
+ 1150  more COPYING
+ 1151  ls
+ 1152  more ChangeLog 
+ 1153  more AUTHORS
+ 1154  ls
+ 1155  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1156  more utils/dgtnixTest.cpp
+ 1157  ls /dev/serial/by-path/pci-0000\:00\:14.0-usb-0\:7\:1.0-port0 
+ 1158  utils/dgtnixTest /dev/serial/by-path/pci-0000\:00\:14.0-usb-0\:7\:1.0-port0 
+ 1159  utils/dgtnixTest /dev/ttyUSB0
+ 1160  utils/dgtnixTest /dev/ttyS3
+ 1161  vi /home/kevin/.bashrc
+ 1162  ls /etc/udev/rules.d
+ 1163  cat /etc/udev/rules.d/66-tty.rules 
+ 1164  ls
+ 1165  ls ..
+ 1166  vi ../README
+ 1167  cat /etc/udev/rules.d/10-kinova-arm.rules 
+ 1168  vi /etc/udev/rules.d/10-kinova-arm.rules 
+ 1169  sudo vi /etc/udev/rules.d/10-kinova-arm.rules 
+ 1170  utils/dgtnixTest /dev/ttyUSB0
+ 1171  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1172  utils/dgtnixTest /dev/ttyUSB0
+ 1173  history
+ 1174  utils/dgtnixTest /dev/ttyUSB0
+ 1175  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1176  sudo vi /etc/udev/rules.d/10-kinova-arm.rules 
+ 1177  sudo vi /etc/udev/rules.d/66-tty.rules 
+ 1178  utils/dgtnixTest /dev/ttyUSB0
+ 1179  ls /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1180  sudo vi /etc/udev/rules.d/66-tty.rules 
+ 1181  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1182  cd
+ 1183  cd catkin_ws/
+ 1184  ls
+ 1185  ./getboard 
+ 1186  ./kk2.o
+ 1187  grep stdlib src/*
+ 1188  g++ -pthread kk2.c -o kk2.o
+ 1189  ./kk2.o
+ 1190  cd
+ 1191  cd lincoln3/dgtnix-1.9.1
+ 1192  ls
+ 1193  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1194  utils/dgtnixTest /dev/ttyUSB0 
+ 1195  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1196  ls
+ 1197  make clean
+ 1198  make
+ 1199  make check
+ 1200  make install
+ 1201  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1202  utils/dgtnixTest /dev/ttyUSB0 
+ 1203  ls 0al /dev/ttyUSB0 
+ 1204  ls -al /dev/ttyUSB0 
+ 1205  ls -al /dev/tty42
+ 1206  ls -al /dev/ttyUSB0 
+ 1207  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1208  ls -al /dev/ttyUSB0 
+ 1209  utils/dgtnixTest /dev/ttyUSB0 
+ 1210  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1211  ls
+ 1212  vi src/dgtnix.c 
+ 1213  make
+ 1214  make install
+ 1215  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1216  vi src/dgtnix.c 
+ 1217  make; make install
+ 1218  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1219  sudo vi /etc/udev/rules.d/66-tty.rules  vi
+ 1220  vi /etc/udev/rules.d/10-kinova-arm.rules 
+ 1221  sudo vi /etc/udev/rules.d/66-tty.rules  vi
+ 1222  sudo vi /etc/udev/rules.d/66-tty.rules  
+ 1223  utils/dgtnixTest /dev/ttyUSB0 
+ 1224  vi /etc/udev/rules.d/66-tty.rules  
+ 1225  sudo vi /etc/udev/rules.d/66-tty.rules  
+ 1226  utils/dgtnixTest /dev/ttyUSB0 
+ 1227  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1228  pwd
+ 1229  python utils/dgtnixTest.py
+ 1230  python3 utils/dgtnixTest.py
+ 1231  py utils/dgtnixTest.py
+ 1232  python5 utils/dgtnixTest.py
+ 1233  python3 utils/dgtnixTest.py
+ 1234  python utils/dgtnixTest.py
+ 1235  utils/dgtnixTest /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1236  ls -al /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1237  sudo vi /etc/udev/rules.d/66-tty.rules  
+ 1238  ls -al /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1239  ls -al /dev/ttyUSB0 
+ 1240  utils/dgtnixTest /dev/ttyUSB0
+ 1241  sudo chmod 666 /dev/ttyUSB0
+ 1242  ls -al /dev/ttyUSB0 
+ 1243  utils/dgtnixTest /dev/ttyUSB0
+ 1244  history
+ 1245  vi README
+ 1246  cd ..
+ 1247  ls
+ 1248  vi README
+ 1249  utils/dgtnixTest /dev/ttyUSB0
+ 1250  cd dgtnix-1.9.1/
+ 1251  utils/dgtnixTest /dev/ttyUSB0
+ 1252  cd
+ 1253  cd catkin_ws/
+ 1254  ls
+ 1255  ./kk2.o
+ 1256  ls /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 >>getboard
+ 1257  vi getboard 
+ 1258  ./getboard
+ 1259  cat getboard
+ 1260  ./kk2.o
+ 1261  ./getboard
+ 1262  ./kk2.o | awk 'NR>1' | sed 's/^..//'
+ 1263  cat getboard
+ 1264  ./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#'
+ 1265  ./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#' | sed 's/#|.*//'
+ 1266  ./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#' | sed 's/#|.*//' | wc
+ 1267  ./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#' | sed 's/#|.*//' | wc -w
+ 1268  cat getboard
+ 1269  ./getboard
+ 1270  cat getboard
+ 1271  vi getboard
+ 1272  ./getboard
+ 1273  vi getboard
+ 1274  ./getobard
+ 1275  ./getboard 
+ 1276  ls
+ 1277  more README
+ 1278  rostopic echo -c /m1n4s200_driver/out/joint_state | head -11 
+ 1279  rostopic info /m1n4s200_driver/out/joint_state 
+ 1280  more READMe
+ 1281  more README
+ 1282  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 90 0 0 0
+ 1283  rostopic echo -c /m1n4s200_driver/out/joint_state | head -11 
+ 1284  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 90 0 0 0
+ 1285  rostopic echo -c /m1n4s200_driver/out/joint_state | head -11 
+ 1286  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 90 0 0 0
+ 1287  rostopic echo -c /m1n4s200_driver/out/joint_state | head -11 
+ 1288  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 90 0 0 0
+ 1289  rostopic echo -c /m1n4s200_driver/out/joint_state | head -11 
+ 1290  home
+ 1291  rostopic info /m1n4s200_driver/out/joint_state 
+ 1292  rostopic info /m1n4s200_driver/out/joint_angles
+ 1293  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -11 
+ 1294  rostopic echo -c /m1n4s200_driver/out/joint_angles 
+ 1295  vi README
+ 1296  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1297  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -360 0 0 0
+ 1298  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1299  home
+ 1300  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1301  cat ttt
+ 1302  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+ 1303  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -2 86 12 0
+ 1304  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1305  cat ttt
+ 1306  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15  0
+ 1307  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 5 5 5 5
+ 1308  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15  0
+ 1309  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1310  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -4.5 24.8 24.7 -4.6
+ 1311  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 4.5 -24.8 -24.7 4.6
+ 1312  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -4.5 24.8 24.7 -4.6
+ 1313  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 4.5 -24.8 -24.7 4.6
+ 1314  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -4.5 24.8 24.7 -4.6
+ 1315  cat ttt
+ 1316  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -25 -25 0
+ 1317  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 25 25 0
+ 1318  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -25 -35 0
+ 1319  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 25 35 0
+ 1320  home
+ 1321  cat ttt
+ 1322  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 10 10
+ 1323  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -2 86 12 0
+ 1324  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1325  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -25 -35 0
+ 1326  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1327  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -15 0 0 0
+ 1328  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 
+ 1329  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 5 0
+ 1330  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 -5 0
+ 1331  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 -5 0
+ 1332  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -5 0
+ 1333  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 10 0
+ 1334  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 10 0
+ 1335  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0
+ 1336  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 1 0 0 0
+ 1337  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0 
+ 1338  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 5 0 
+ 1339  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 1 0 0 0
+ 1340  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 3 0
+ 1341  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -2 0
+ 1342  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -1 0 0
+ 1343  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 1 0 0
+ 1344  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 1 0
+ 1345  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0.5 0 0 0
+ 1346  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7
+ 1347  history >>moveto
+ 1348  vi moveto
+ 1349  chmod 755 moveto
+ 1350  ./moveto
+ 1351  vi moveto
+ 1352  vi moveto | cat -
+ 1353  kill %1
+ 1354  ./moveto | echo
+ 1355  ./moveto | echo -
+ 1356  ./moveto | cat -
+ 1357  vi moveto | cat -
+ 1358  vi moveto
+ 1359  jobs
+ 1360  kill %1
+ 1361  jobs
+ 1362  kill -9 %1
+ 1363  vi moveto
+ 1364  rm .moveto.swp
+ 1365  vi moveto
+ 1366  ./moveto
+ 1367  ./moveto | awk '{print $1}'
+ 1368  ./moveto | awk '{print $2}'
+ 1369  ./moveto | awk '{print $5}'
+ 1370  vi moveto
+ 1371  ./moveto 
+ 1372  vi moveto
+ 1373  ./moveto 
+ 1374  vi moveto
+ 1375  ./moveto 
+ 1376  vi moveto
+ 1377  ./moveto 30
+ 1378  vi moveto
+ 1379  ./moveto 30
+ 1380  vi moveto
+ 1381  ./moveto 30
+ 1382  vi moveto
+ 1383  ./moveto 30
+ 1384  expr 1 + 1
+ 1385  vi moveto
+ 1386  expr 1 + 1
+ 1387  ./moveto 30
+ 1388  vi moveto
+ 1389  cat coords
+ 1390  ./moveto 273.26 261.15 90.89 180.18
+ 1391  vi moveto
+ 1392  ./moveto 273.26 261.15 90.89 180.18
+ 1393  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15 0
+ 1394  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -5 -3 -2 -1
+ 1395  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -5 -3 -2 -10
+ 1396  ./moveto 273.26 261.15 90.89 180.18
+ 1397  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15 0
+ 1398  cat coords
+ 1399  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 266.31 261.21 76.00 180.18
+ 1400  home
+ 1401  start
+ 1402  home
+ 1403  cat coords
+ 1404  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4
+ 1405  cat moveto
+ 1406  vi moveto
+ 1407  cat coords
+ 1408  ./moveto 273.26 261.15 90.89 180.18
+ 1409  cat ttt
+ 1410  vi moveto
+ 1411  ./moveto 273.26 261.15 90.89 180.18
+ 1412  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+ 1413  home
+ 1414  ./moveto 273.26 261.15 90.89 180.18
+ 1415  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+ 1416  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -15 -15 45
+ 1417  vi moveto
+ 1418  ./moveto 273.26 261.15 90.89 180.18
+ 1419  vi moveto
+ 1420  ./moveto 273.26 261.15 90.89 180.18
+ 1421  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 10 -25 -15 45
+ 1422  ./moveto 273.26 261.15 90.89 180.18
+ 1423  vi coords
+ 1424  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4
+ 1425  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1426  vi coords
+ 1427  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1428  vi coords
+ 1429  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1430  vi coords
+ 1431  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1432  vi coords
+ 1433  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1434  vi coords
+ 1435  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1436  vi coords
+ 1437  chmod 755 coords
+ 1438  ./coords
+ 1439  vi coords
+ 1440  ./coords
+ 1441  vi coords
+ 1442  ./coords
+ 1443  vi coords
+ 1444  ./coords
+ 1445  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -10 -10
+ 1446  vi coords
+ 1447  ./coords
+ 1448  vi coords
+ 1449  ./coords
+ 1450  vi coords
+ 1451  ./coords
+ 1452  vi coords
+ 1453  ./coords
+ 1454  vi coords
+ 1455  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1456  vi coords
+ 1457  home
+ 1458  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+ 1459  ./coords
+ 1460  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 >>coords
+ 1461  vi coords
+ 1462  ls
+ 1463  vi coords
+ 1464  chmod 755 moveto1
+ 1465  cp moveto1 moveto2
+ 1466  vi moveto2
+ 1467  vi coords
+ 1468  ./coords
+ 1469  vi coords
+ 1470  ./coords
+ 1471  vi coords
+ 1472  cat moveto1
+ 1473  vi coords
+ 1474  ./coords
+ 1475  vi coords
+ 1476  ./coords
+ 1477  vi coords
+ 1478  ./coords
+ 1479  vi coords
+ 1480  ./coords
+ 1481  vi coords
+ 1482  vi ttt coords
+ 1483  ./coords
+ 1484  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -40 -40
+ 1485  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -10 -10
+ 1486  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+ 1487  vi ttt coords
+ 1488  ./coords
+ 1489  vi ttt coords
+ 1490  vi coords
+ 1491  ./coords
+ 1492  vi coords
+ 1493  ./coords
+ 1494  vi coords
+ 1495  ./coords
+ 1496  vi coords
+ 1497  ./coords
+ 1498  vi coords
+ 1499  vi moveto2
+ 1500  ./coords
+ 1501  vi moveto2
+ 1502  vi coords
+ 1503  vi tt
+ 1504  bc 1 2
+ 1505  vi tt1
+ 1506  chmod 755 tt1
+ 1507  tt1 2 3
+ 1508  ./tt1 2 3
+ 1509  vi tt
+ 1510  chmod 755 tt
+ 1511  ./tt
+ 1512  vi tt
+ 1513  ./tt
+ 1514  vi tt
+ 1515  rm tt
+ 1516  cat tt1
+ 1517  rm tt1
+ 1518  ls
+ 1519  vi coords
+ 1520  ./coords
+ 1521  vi coords
+ 1522  ./coords 1
+ 1523  ./coords 2
+ 1524  vi coords
+ 1525  ./coords 1
+ 1526  ./coords 2
+ 1527  vi coords
+ 1528  ./coords 1
+ 1529  vi coords
+ 1530  ./coords 2
+ 1531  vi coords
+ 1532  ./coords 2
+ 1533  ./coords 5
+ 1534  ./coords 4
+ 1535  vi coords
+ 1536  ./coords 5
+ 1537  vi coords
+ 1538  ./coords 4
+ 1539  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -2 -
+ 1540  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -2 0
+ 1541  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 -5 0
+ 1542  home
+ 1543  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1544  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1545  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1546  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1547  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1548  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1549  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1550  stop
+ 1551  start
+ 1552  home
+ 1553  jobs
+ 1554  home
+ 1555  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1556  exit
+ 1557  cd catkin_ws/
+ 1558  vi README
+ 1559  vi coords
+ 1560  chmod 755 coords
+ 1561  ./coords
+ 1562  vi coords
+ 1563  ./coords
+ 1564  vi coords
+ 1565  ./coords
+ 1566  vi coords
+ 1567  ./coords
+ 1568  vi coords
+ 1569  ./coords
+ 1570  vi coords
+ 1571  ./coords
+ 1572  cat coords
+ 1573  vi coords
+ 1574  vi moveto
+ 1575  history >>moveto
+ 1576  vi moveto
+ 1577  cd 
+ 1578  cd lincoln
+ 1579  ls
+ 1580  more adventures\ in\ installing\ C.docx 
+ 1581  more README
+ 1582  cd ..
+ 1583  ls
+ 1584  cd lincoln2
+ 1585  ls
+ 1586  cd owi-arm/
+ 1587  ls
+ 1588  more scr.fixpos
+ 1589  more fs.correct.x.rg
+ 1590  exit
+ 1591  cd catkin_ws/
+ 1592  source devel/setup.bash
+ 1593  launch
+ 1594  kill %1
+ 1595  jobs
+ 1596  launch
+ 1597  kill %1
+ 1598  launch
+ 1599  jobs
+ 1600  kill %1
+ 1601  launch
+ 1602  exit
+ 1603  cd catkin_ws/
+ 1604  source devel/setup.bash
+ 1605  cat ttt
+ 1606  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1607  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1608  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 100
+ 1609  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 0
+ 1610  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 0
+ 1611  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 100
+ 1612  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 -100
+ 1613  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 50
+ 1614  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 100
+ 1615  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -80 0 0 0
+ 1616  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 160 0 0 0
+ 1617  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 0 100
+ 1618  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1619  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1620  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1621  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1622  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1623  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1624  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1625  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1626  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1627  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1628  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 80 0 0 0
+ 1629  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1630  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1631  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1632  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1633  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1634  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1635  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1636  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1637  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1638  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1639  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1640  exit
+ 1641  cd catkin_ws/
+ 1642  ls
+ 1643  ./getboard
+ 1644  ./kk2.o
+ 1645  ls
+ 1646  cat getboard
+ 1647  ./getboard
+ 1648  vi getboard
+ 1649  ./getboard
+ 1650  cd
+ 1651  cd catkin_ws/
+ 1652  source devel.setup.bash
+ 1653  source devel/setup.bash
+ 1654  launch
+ 1655  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 100 100
+ 1656  home
+ 1657  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+ 1658  jobs
+ 1659  kill -9 %1
+ 1660  launch
+ 1661  kill -9 %1
+ 1662  jobs
+ 1663  launch
+ 1664  jobs
+ 1665  kill %1
+ 1666  kill %2
+ 1667  launch
+ 1668  jobs
+ 1669  kill %3
+ 1670  launch
+ 1671  jobs
+ 1672  kill %1
+ 1673  devel/setup.bash
+ 1674  source devel/setup.bash
+ 1675  jobs
+ 1676  launch
+ 1677  kill %1
+ 1678  exit
+ 1679  cd catkin_ws/
+ 1680  source devel/setup.bash
+ 1681  history
+ 1682  rosparam help
+ 1683  rosparam get /m1n4s200_driver/jointSpeedLimitParameter1
+ 1684  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 5
+ 1685  ls
+ 1686  cat phone
+ 1687  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1688  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 10
+ 1689  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1690  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 40
+ 1691  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1692  rosparam set /m1n4s200_driver/jointSpeedLimitParameter2 40
+ 1693  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 0 20
+ 1694  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 1
+ 1695  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 20 0 0 0
+ 1696  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 10
+ 1697  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 20 0 0 0
+ 1698  home
+ 1699  find . -name kinova_bringup -print
+ 1700  vi src/kinova-ros/kinova_bringup/launch/config/robot_parameters.yaml 
+ 1701  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 20 0 0 0
+ 1702  vi src/kinova-ros/kinova_bringup/launch/config/robot_parameters.yaml 
+ 1703  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 20 0 0 0
+ 1704  find . -name kinova_bringup -print
+ 1705  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1706  home
+ 1707  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 30
+ 1708  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1709  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 30
+ 1710  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1711  ls
+ 1712  cat moveto1
+ 1713  rosrun kinova_driver joint_trajectory_action_server -v -r m1n4s200 degree -- 20 0 0
+ 1714  rosrun kinova_driver joint_trajectory_action_server degree -- 20 0 0 0
+ 1715  home
+ 1716  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 30
+ 1717  rosrun kinova_driver joint_trajectory_action_server -v -r m1n4s200 degree -- 20 0 0
+ 1718  rosparam set /m1n4s200_driver/jointSpeedLimitParameter1 30
+ 1719  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -20 0 0 0
+ 1720  ls
+ 1721  ./phone
+ 1722  home
+ 1723  ./phone
+ 1724  vi phone
+ 1725  home&
+ 1726  vi ./phone
+ 1727  ./phone
+ 1728  vi ./phone
+ 1729  cat phone
+ 1730  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1731  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+ 1732  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -90 65 -13 95
+ 1733  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 6 0 0
+ 1734  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -6 0 0
+ 1735  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 1 0
+ 1736  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -11 0
+ 1737  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 11 0
+ 1738  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -1 0
+ 1739  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 6 0 0
+ 1740  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -6 0 0
+ 1741  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 0 0
+ 1742  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 10 0 0
+ 1743  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 0 0
+ 1744  vi ./phone
+ 1745  home
+ 1746  ./phone
+ 1747  cat phone
+ 1748  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1749  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+ 1750  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -90 65 -12 95
+ 1751  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 6 0 0
+ 1752  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -6 0 0
+ 1753  cat phone
+ 1754  vi phone
+ 1755  ./phone
+ 1756  vi phone
+ 1757  ./phone
+ 1758  ls
+ 1759  more coords
+ 1760  vi coords
+ 1761  ./coords 5
+ 1762  ./coords 4
+ 1763  ./coords 1
+ 1764  ./coords 2
+ 1765  more coords
+ 1766  ./coords 2
+ 1767  ./coords 4
+ 1768  vi coords
+ 1769  ./coords 4
+ 1770  vi coords
+ 1771  cat moveto1
+ 1772  ./coords 3
+ 1773  vi coords
+ 1774  ./coords 3
+ 1775  vi coords
+ 1776  ./coords 3
+ 1777  ./coords 2
+ 1778  home
+ 1779  ./phone
+ 1780  cat phone
+ 1781  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1782  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+ 1783  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -90 65 -12 95
+ 1784  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0
+ 1785  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 0 0
+ 1786  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 1 0
+ 1787  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0
+ 1788  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 0 0
+ 1789  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 1 0
+ 1790  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -11 0
+ 1791  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 11 0
+ 1792  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 0 -1 0
+ 1793  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0
+ 1794  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -5 0 0
+ 1795  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 6 -1 0
+ 1796  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -6 1 0
+ 1797  home
+ 1798  cat phone
+ 1799  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1800  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+ 1801  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -90 65 -12 95
+ 1802  ls
+ 1803  cat README
+ 1804  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7 
+ 1805  cat >zzz
+ 1806  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -7 >>zzz
+ 1807  home&
+ 1808  vi zzz
+ 1809  chmod 755 zzz
+ 1810  ./zzz
+ 1811  vi zzz
+ 1812  cat phone
+ 1813  vi moveto
+ 1814  vi zzz
+ 1815  ./zzz
+ 1816  vi zzz
+ 1817  ./zzz
+ 1818  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 2 0 0
+ 1819  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 1 0 0
+ 1820  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 2 0 0
+ 1821  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -2 0 0
+ 1822  source devel/setup.bash
+ 1823  home
+ 1824  start
+ 1825  rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -2 0 0
+ 1826  ls
+ 1827  cat moveto
+ 1828  rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4
+ 1829  exit
+ 1830  cd catkin_ws/
+ 1831  source devel/setup.bash
+ 1832  launch
+ 1833  kill %1
+ 1834  find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+ 1835  when processing file: /home/kevin/catkin_ws/src/kinova-ros/kinova_description/urdf/m1n4s200_standalone.xacro
+ 1836  sudo apt install when
+ 1837  find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+ 1838  jobs
+ 1839  launch
+ 1840  jobs
+ 1841  kill %1
+ 1842  jobs
+ 1843  kill %1
+ 1844  kill -9 %1
+ 1845  jobs
+ 1846  exit
+ 1847  cd catkin_ws/
+ 1848  source devel/setup.bash
+ 1849  more phone
+ 1850  rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+ 1851  home
+ 1852  start
+ 1853  rosnode info /m1n4s200_driver 
+ 1854  home
+ 1855  source devel/setup.bash
+ 1856  home
+ 1857  exit
+ 1858  cd catkin_ws/
+ 1859  source devel/setup.bash
+ 1860  launch
+ 1861  sudo chmod o+rw /dev/ttyS1
+ 1862  cd /dev/tty
+ 1863  cd /dev
+ 1864  kill %1
+ 1865  exit
+ 1866  cd catkin_ws/
+ 1867  source devel/setup.bash
+ 1868  home
+ 1869  ls
+ 1870  more zzz
+ 1871  vi zzz
+ 1872  ./zzz
+ 1873  vi zzz
+ 1874  ./zzz
+ 1875  vi zzz
+ 1876  ./zzz
+ 1877  vi zzz
+ 1878  ./zzz
+ 1879  vi zzz
+ 1880  cat zzz
+ 1881  ./zzz
+ 1882  vi zzz
+ 1883  ./zzz
+ 1884  vi zzz
+ 1885  ./zzz
+ 1886  vi phone zzz
+ 1887  home
+ 1888  more zzz
+ 1889  ./zzz
+ 1890  vi phone zzz
+ 1891  ./zzz
+ 1892  vi zzz
+ 1893  ./zzz
+ 1894  vi zzz
+ 1895  ./zzz
+ 1896  history
+ 1897  mv phone phone.old
+ 1898  mv zzz phone
+ 1899  ./phone
+ 1900  cat ./phone
+ 1901  ./phone
+ 1902  ls
+ 1903  ./getboard
+ 1904  ls
+ 1905  cat getboard
+ 1906  ./kk2.o
+ 1907  g++ -pthread kk2.c -o kk2.o
+ 1908  ./kk2.o
+ 1909  cat getboard
+ 1910  ls -al /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1911  chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1912  sudo chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1913  ls -al /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1914  ls -al /dev/ttyUSB0
+ 1915  sudo chmod 755 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1916  ls -al /dev/ttyUSB0
+ 1917  cat getboard
+ 1918  ./kk2.o
+ 1919  history
+ 1920  sudo chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1921  ./kk2.o
+ 1922  sudo chmod 755 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1923  ./kk2.o
+ 1924  sudo chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1925  ./kk2.o
+ 1926  sudo chmod 644 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1927  ./kk2.o
+ 1928  sudo chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1929  ./kk2.o
+ 1930  sudo chmod 777 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1931  ./kk2.o
+ 1932  sudo chmod 755 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1933  ./kk2.o
+ 1934  ls -al /dev/ttyUSB0
+ 1935  sudo chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 
+ 1936  ./kk2.o
+ 1937  ls -al /dev/ttyUSB0
+ 1938  cp kk2.c kk3.c
+ 1939  vi kk3.c
+ 1940  g++ -pthread kk3.c -o kk3.o
+ 1941  ./kk3.o
+ 1942  ls
+ 1943  cd
+ 1944  npm install dgtchess
+ 1945  sudo apt install npm
+ 1946  npm install dgtchess
+ 1947  sudo apt get node.js
+ 1948  sudo apt install node.js
+ 1949  ls
+ 1950  more xyz
+ 1951  rm xyz*
+ 1952  cd
+ 1953  cd catkin_ws/
+ 1954  ls
+ 1955  more coords
+ 1956  ./coords 1
+ 1957  more coords
+ 1958  vi coords
+ 1959  ./coords 5
+ 1960  vi coords
+ 1961  ./coords 3
+ 1962  vi coords
+ 1963  ./coords 2
+ 1964  ./coords 5
+ 1965  cd
+ 1966  cd arena
+ 1967  ls
+ 1968  gunzip arenalinux_64bit_1.1.tar.gz 
+ 1969  tar -xvf arenalinux_64bit_1.1.tar 
+ 1970  ls
+ 1971  pwd
+ 1972  more Readme
+ 1973  ls Readme
+ 1974  more Readme/Readme.txt
+ 1975  ls
+ 1976  make
+ 1977  ./Arena_x86_64_linux 
+ 1978  ls
+ 1979  ls Extras
+ 1980  find . -name Extras -print
+ 1981  ./Arena_x86_64_linux 
+ 1982  exit
+ 1983  cd arena/
+ 1984  ls
+ 1985  ./Arena_x86_64_linux 
+ 1986  exit
+ 1987  od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1988  od -h
+ 1989  od --help
+ 1990  od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1991  od -A n -t c /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1992  exit
+ 1993  od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1994  od -A n -t c /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1995  od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+ 1996  pwd
+ 1997  ls
+ 1998  od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 >zzz
+ 1999  rm zzz
+ 2000  unbuffer od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 >zzz
+ 2001  sudo apt install unbuffer
+ 2002  sudo apt install expect
+ 2003  unbuffer od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 >zzz
+ 2004  cat zzz
+ 2005  unbuffer od -A n -t x1 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0 >zzz
+ 2006  cat zzz
+ 2007  unbuffer od -A n -t x1 /dev/ttyUSB0 >dgtboard&
+ 2008  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2009  tail -17 dgtboard
+ 2010  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //'
+ 2011  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d' ' -f 1-64
+ 2012  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2013  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d' ' -f 1-64
+ 2014  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64
+ 2015  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | tr ' ' '#'
+ 2016  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /'
+ 2017  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /p/g'
+ 2018  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 / /g'
+ 2019  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 / /g' | sed 's/01 /P/g' | sed 's/07/p/g'
+ 2020  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /Q/g'
+ 2021  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2022  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /Q/g'
+ 2023  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64
+ 2024  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2025  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64
+ 2026  tail -17 dgtboard | tr -d '\n' 
+ 2027  tail -17 dgtboard 
+ 2028  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2029  tail -17 dgtboard 
+ 2030  tail -50 dgtboard 
+ 2031  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2032  tail -50 dgtboard 
+ 2033  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2034  tail -50 dgtboard 
+ 2035  more dgtboard 
+ 2036  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /Q/g' | sed 's/05 /K/g' | sed 's/0b /k/g' | sed 's/02 /R/g' | sed 's/08 /r/g' | sed 's/04 /B/g' | sed 's/0a /b/g' | sed 's/03 /N/g' | sed 's/09 /n/g'
+ 2037  jobs
+ 2038  kill %1
+ 2039  unbuffer od -A n -t x1 /dev/ttyUSB0 >dgtboard&
+ 2040  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2041  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /Q/g' | sed 's/05 /K/g' | sed 's/0b /k/g' | sed 's/02 /R/g' | sed 's/08 /r/g' | sed 's/04 /B/g' | sed 's/0a /b/g' | sed 's/03 /N/g' | sed 's/09 /n/g'
+ 2042  tail -17 dgtboard 
+ 2043  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2044  tail -17 dgtboard 
+ 2045  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2046  tail -17 dgtboard 
+ 2047  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /Q/g' | sed 's/05 /K/g' | sed 's/0b /k/g' | sed 's/02 /R/g' | sed 's/08 /r/g' | sed 's/04 /B/g' | sed 's/0a /b/g' | sed 's/03 /N/g' | sed 's/09 /n/g'
+ 2048  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /'
+ 2049  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2050  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /'
+ 2051  echo "0x42" | xxd -r -p >/dev/ttyUSB0
+ 2052  tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /'
+ 2053  cat dgtboard 
+ 2054  clear
+ 2055  ls
+ 2056  more zzz
+ 2057  rm zzz
+ 2058  cd
+ 2059  cd catkin_ws/
+ 2060  ls
+ 2061  source devel/setup.bash
+ 2062  history
+ 2063  history >>/home/kevin/lincoln2/board/mydgt/probing-usb 

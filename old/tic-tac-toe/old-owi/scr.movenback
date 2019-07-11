@@ -1,0 +1,11 @@
+
+# pick up red die, move it, pick it up, move it back; repeat
+# worked 15 times in a row!
+# only glitch was failing to release the block (twice), but recovered.
+# best repeatability yet
+#
+# start with shoulder straight up, elbow slightly down, wrist down
+
+fs.correct 56 64 1; move1 01 00 00 1; move1 10 00 00 0.5; move1 00 01 00 2.5; move1 20 00 00 0.25; move1 02 00 00 0.9; move1 10 00 00 0.2; move1 00 02 00 0.3
+
+fs.correct 56 64 1; move1 01 00 00 1; move1 10 00 00 0.5; move1 00 02 00 3; move1 20 00 00 0.25; move1 02 00 00 0.9; move1 00 01 00 0.1

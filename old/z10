@@ -1,0 +1,15 @@
+#!/usr/bin/expect
+
+spawn /usr/games/gnuchess --uci
+
+send "position fen 8/5Q1K/8/8/1b6/kp6/1p6/8 w KQkq - \r"
+
+expect -timeout 1 readyok
+
+send "go depth 2 \r"
+
+expect -timeout 1 readyok
+
+send "quit \r"
+
+

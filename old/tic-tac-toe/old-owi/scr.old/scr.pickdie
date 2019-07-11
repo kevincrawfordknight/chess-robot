@@ -1,0 +1,15 @@
+
+# pick up die from virtually any (shoulder+elbow) position.
+
+fs.correct.y xx 37 1 red 40
+fs.correct.x.rg 53 xx 1
+fs.correct.x.rg 53 xx 1
+fs.shoulder.elbow 
+move1 20 00 00 1.0
+fs.correct 53 65 1 red 40
+fs.correct 53 65 1 red 40
+move1 01 00 00 1
+move1 10 00 00 2
+move1 60 00 00 2
+move1 02 00 00 1
+move1 00 02 0 0.8

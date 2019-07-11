@@ -1,0 +1,5 @@
+
+A=`rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 | sed 's/joint.://' | tr -d '\n'`
+
+echo $A
+

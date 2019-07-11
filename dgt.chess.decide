@@ -1,0 +1,13 @@
+
+# Takes a board as input ($1) and decides what move to make.
+# Interacts with the "UCI standard dialog" using the Linux "expect" utility.
+# We can substitute "stockfish" for "gnuchess --uci" if we want to.
+
+A=`cat $1`
+
+printf "#!/usr/bin/expect\nspawn /usr/games/gnuchess --uci\nsend \"position fen $A @r\"\nsend \"go depth 2 @r\"\nexpect bestmove\nsend \"quit @r\"\n" | tr '@' '\\' >dgt.chess.exe
+
+chmod 755 dgt.chess.exe
+
+./dgt.chess.exe | grep 'bestmove' | awk '{print $2}'
+

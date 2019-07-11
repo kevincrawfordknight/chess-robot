@@ -1,0 +1,22 @@
+
+# pick up the phone
+
+aplay -d 26 phone.wav &
+
+rosservice call /m1n4s200_driver/in/home_arm
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 60 60
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- -90 65 -12 95
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 5 0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 1 1 0
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 25 25
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -10 0 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 10 0 0
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 -10 0 0
+rosservice call /m1n4s200_driver/in/home_arm

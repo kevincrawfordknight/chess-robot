@@ -1,0 +1,6 @@
+
+if [ 55 -lt 50 ]
+  then move 00 01 00 1.0
+  else move 00 02 00 1.0
+fi
+

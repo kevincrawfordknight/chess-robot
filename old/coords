@@ -1,0 +1,87 @@
+
+# positions on board
+
+p8joint1=273.261352539
+p8joint2=261.153045654
+p8joint3=90.8944473267
+p8joint4=180.184509277
+
+# positions to grab pieces
+
+w5joint1=290.677307129
+w5joint2=261.5625
+w5joint3=77.6753005981
+w5joint4=180.548995972
+
+w4joint1=279.164428711
+w4joint2=262.247558594
+w4joint3=76.7148513794
+w4joint4=180.548995972
+
+w3joint1=268.228546143
+w3joint2=260.862579346
+w3joint3=76.7155380249
+w3joint4=180.548995972
+
+w2joint1=254.936157227
+w2joint2=261.879089355
+w2joint3=79.1856536865
+w2joint4=180.548858643
+
+w1joint1=244.32460022
+w1joint2=260.668823242
+w1joint3=82.3757858276
+w1joint4=180.548858643
+
+# position above pieces
+
+njoint1=266.807128906
+njoint2=247.391784668
+njoint3=66.3836975098
+njoint4=173.917175293
+
+# position above board
+
+n2joint1=271.703857422
+n2joint2=246.217559814
+n2joint3=78.4281311035 # swapped from 88 
+n2joint4=177.25
+
+# move a piece to position 8
+
+if [ "$1" -eq 1 ]
+  then A=$w1joint1; B=$w1joint2; C=$w1joint3; D=$w1joint4
+elif [ "$1" -eq 2 ]
+  then A=$w2joint1; B=$w2joint2; C=$w2joint3; D=$w2joint4
+elif [ "$1" -eq 3 ]
+  then A=$w3joint1; B=$w3joint2; C=$w3joint3; D=$w3joint4
+elif [ "$1" -eq 4 ]
+  then A=$w4joint1; B=$w4joint2; C=$w4joint3; D=$w4joint4
+elif [ "$1" -eq 5 ]
+  then A=$w5joint1; B=$w5joint2; C=$w5joint3; D=$w5joint4
+fi
+
+echo $A $B $C $D
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+./moveto2 $A $B $C $D
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 40 40
+#./moveto1 $njoint1 $njoint2 $njoint3 $njoint4
+./moveto1 $n2joint1 $n2joint2 $n2joint3 $n2joint4
+./moveto2 $p8joint1 $p8joint2 $p8joint3 $p8joint4
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+./moveto1 $njoint1 $njoint2 $njoint3 $njoint4
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+./moveto2 $p8joint1 $p8joint2 $p8joint3 $p8joint4
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 40 40
+#./moveto1 $njoint1 $njoint2 $njoint3 $njoint4
+./moveto1 $n2joint1 $n2joint2 $n2joint3 $n2joint4
+./moveto2 $A $B $C $D
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+./moveto1 $njoint1 $njoint2 $njoint3 $njoint4
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+

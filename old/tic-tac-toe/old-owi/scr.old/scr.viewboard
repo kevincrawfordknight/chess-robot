@@ -1,0 +1,9 @@
+
+# get into position to view whole board
+
+scr.fixpos
+move1 60 0 0 1; move1 10 0 0 0.2; fs.correct.y xx 20 1 red 35
+move1 60 0 0 1; move1 10 0 0 0.2; fs.correct.y xx 20 1 red 35
+move1 60 0 0 1; move1 10 0 0 0.2; fs.correct.y xx 20 1 red 35
+move1 60 0 0 1; move1 10 0 0 0.2; fs.correct.y xx 10 1 red 35
+

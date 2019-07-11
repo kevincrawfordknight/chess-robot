@@ -1,0 +1,1 @@
+printf "position fen 8/5kpp/8/5p2/5P2/4K3/6PP/8 b - - bm 1; id 1;\ngo depth 5" | stockfish

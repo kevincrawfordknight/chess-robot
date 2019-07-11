@@ -1,0 +1,6 @@
+
+unbuffer od -A n -t x1 /dev/ttyUSB0 > dgtboard &
+echo "0x40" | xxd -r -p >/dev/ttyUSB0
+echo "0x42" | xxd -r -p >/dev/ttyUSB0
+echo "0x42" | xxd -r -p >/dev/ttyUSB0
+head -5 dgtboard

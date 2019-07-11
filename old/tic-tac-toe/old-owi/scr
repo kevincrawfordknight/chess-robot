@@ -1,0 +1,20 @@
+
+# from viewboard2, go grab blue piece from off board
+
+while [ 1 ]; do
+  fs.correct.x.rg 50 xx 1 $1 $2
+  DIST=0
+  while [ $DIST -lt 33 ]; do
+    move1 90 0 0 0.15
+    fs.correct.y xx 50 1 red $1
+    DIST=`fs.rg.dist $1 $2 | tail -1 | awk '{print $NF}'`
+    echo 'dist = '$DIST
+  done
+  move1 1 0 0 1
+  move1 10 0 0 2
+  move1 0 1 0 1
+  move1 2 0 0 1
+  move1 60 0 0 2
+  move1 0 2 0 1
+done
+

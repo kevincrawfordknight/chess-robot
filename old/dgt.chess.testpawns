@@ -1,0 +1,56 @@
+
+dgt.chess.bishopmoves a2 a3
+dgt.chess.bishopmoves a3 a4
+dgt.chess.bishopmoves a4 a5
+dgt.chess.bishopmoves a5 a6
+dgt.chess.bishopmoves a6 a7
+dgt.chess.bishopmoves a7 b2
+
+dgt.chess.bishopmoves b2 b3
+dgt.chess.bishopmoves b3 b4
+dgt.chess.bishopmoves b4 b5
+dgt.chess.bishopmoves b5 b6
+dgt.chess.bishopmoves b6 b7
+dgt.chess.bishopmoves b7 c2
+
+dgt.chess.bishopmoves c2 c3
+dgt.chess.bishopmoves c3 c4
+dgt.chess.bishopmoves c4 c5
+dgt.chess.bishopmoves c5 c6
+dgt.chess.bishopmoves c6 c7
+dgt.chess.bishopmoves c7 d2
+
+dgt.chess.bishopmoves d2 d3
+dgt.chess.bishopmoves d3 d4
+dgt.chess.bishopmoves d4 d5
+dgt.chess.bishopmoves d5 d6
+dgt.chess.bishopmoves d6 d7
+dgt.chess.bishopmoves d7 e2
+
+dgt.chess.bishopmoves e2 e3
+dgt.chess.bishopmoves e3 e4
+dgt.chess.bishopmoves e4 e5
+dgt.chess.bishopmoves e5 e6
+dgt.chess.bishopmoves e6 e7
+dgt.chess.bishopmoves e7 f2
+
+dgt.chess.bishopmoves f2 f3
+dgt.chess.bishopmoves f3 f4
+dgt.chess.bishopmoves f4 f5
+dgt.chess.bishopmoves f5 f6
+dgt.chess.bishopmoves f6 f7
+dgt.chess.bishopmoves f7 g2
+
+dgt.chess.bishopmoves g2 g3
+dgt.chess.bishopmoves g3 g4
+dgt.chess.bishopmoves g4 g5
+dgt.chess.bishopmoves g5 g6
+dgt.chess.bishopmoves g6 g7
+dgt.chess.bishopmoves g7 h2
+
+dgt.chess.bishopmoves h2 h3
+dgt.chess.bishopmoves h3 h4
+dgt.chess.bishopmoves h4 h5
+dgt.chess.bishopmoves h5 h6
+dgt.chess.bishopmoves h6 h7
+

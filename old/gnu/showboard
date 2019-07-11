@@ -1,0 +1,8 @@
+
+# displays board corresponding to .epd of $1
+
+printf "epdload $1\nshow board\nquit\n" | 
+gnuchess |
+egrep -a '^[prnbqkPRNBQK \.]*$' | 
+tail -8
+

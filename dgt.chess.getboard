@@ -1,0 +1,26 @@
+
+# gets chess position from dgt board
+# converts it to .epd format
+# stores it in $1
+
+timeout 2 cat /dev/ttyUSB0
+
+rm -f $1
+
+getboard/kk4.o | 
+awk '(NR>1)&&(NR<10)' | 
+sed 's/^..//' | 
+tr -d '|' |  
+tr ' ' '.' | 
+sed 's/\.\.\.\.\.\.\.\./8/g' | 
+sed 's/\.\.\.\.\.\.\./7/g' | 
+sed 's/\.\.\.\.\.\./6/g' | 
+sed 's/\.\.\.\.\./5/g' | 
+sed 's/\.\.\.\./4/g' | 
+sed 's/\.\.\./3/g' | 
+sed 's/\.\./2/g' | 
+sed 's/\./1/g' | 
+tr '\n' '/' | 
+sed 's/\/$/ w KQkq -/' | 
+awk '{printf("%s\n",$0)}' > $1
+

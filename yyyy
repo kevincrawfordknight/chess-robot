@@ -1,0 +1,6 @@
+
+RANKDIFF=3
+DESTRANK=6
+
+if [[ $RANKDIFF -gt 3 || ( $RANKDIFF -gt 2 && $DESTRANK -gt 6 ) ]]; then echo 1
+fi

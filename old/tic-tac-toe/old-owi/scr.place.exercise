@@ -1,0 +1,11 @@
+
+# practice placing in all 9 squares, middle first
+# light = human, feed me a piece
+
+for i in 5 1 2 3 4 6 7 8 9
+do
+  move1 0 0 1 1
+  sleep 2
+  move1 1 0 0 1
+  scr.place $i 28 20
+done

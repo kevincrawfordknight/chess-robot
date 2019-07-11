@@ -1,0 +1,56 @@
+
+Maybe do this?
+
+  % stty -F /dev/ttyUSB0 9600 -cstopb -parenb
+
+SEND:
+
+(note!  ascii A = hex 0x41)
+
+@ -> put board in idle mode
+A -> returns fixed amount of binary data
+B -> returns fixed amount of binary data
+C -> returns constantly updating binary data, including board changes
+D -> returns fixed amount of binary data whenever board changes
+E -> returns serial number of chessboard (14563)
+F -> nothing
+G -> returns "This DGT board is produced ..."
+H -> nothing
+I -> huge amount of constantly updating binary / kills terminal window
+
+SEE:
+
+http://svn.lirec.eu/scenarios/MyFriend/Watching2Players/iCatChess/ElectronicBoard/dgtbrd13.h
+
+=============================================================================
+
+% echo "0x42" | xxd -r -p >/dev/ttyUSB0
+
+returns board position?
+
+find part that starts with (86 00 43)
+after that, the next 64 numbers are the pieces.
+
+% unbuffer od -A n -t x1 /dev/ttyUSB0 > dgtboard &
+% echo "0x08" | xxd -r -p >/dev/ttyUSB0
+% echo "0x40" | xxd -r -p >/dev/ttyUSB0
+% echo "0x42" | xxd -r -p >/dev/ttyUSB0
+% cat dgtboard
+
+tail -17 dgtboard | tr -d '\n' | sed 's/^.* 86 00 43 //' | cut -d ' ' -f 1-64 | sed 's/$/ /' | sed 's/00 /./g' | sed 's/01 /P/g' | sed 's/07 /p/g' | sed 's/06 /Q/g' | sed 's/0c /q/g' | sed 's/05 /K/g' | sed 's/0b /k/g' | sed 's/02 /R/g' | sed 's/08 /r/g' | sed 's/04 /B/g' | sed 's/0a /b/g' | sed 's/03 /N/g' | sed 's/09 /n/g'
+
+but doesn't always work :(
+and white bishop seems to always screw it up.
+
+=============================================================================
+
+NOTE: to make USB always readable/writable upon plug-in, create rules.d file
+
+  idVendor           0x0403 Future Technology Devices International, Ltd
+  idProduct          0x6001 FT232 USB-Serial (UART) IC
+
+% sudo vi /etc/udev/rules.d/66-tty.rules 
+
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", GROUP="users", MODE="0666"
+
+This works great!

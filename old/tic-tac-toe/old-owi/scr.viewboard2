@@ -1,0 +1,15 @@
+
+# get into position to view whole board
+
+#scr.fixpos $1 $2
+
+fs.correct.x.rg 53 xx 1 $1 $2
+
+fs.shoulder.elbow red $1 green $2
+move1 60 0 0 1; move1 10 0 0 0.2
+move1 60 0 0 1; move1 10 0 0 0.3
+move1 60 0 0 1; move1 10 0 0 0.3
+move1 60 0 0 1; move1 10 0 0 0.2 
+fs.correct.y xx 13 1 red $1
+#fs.correct.y xx 13 1 red $1
+

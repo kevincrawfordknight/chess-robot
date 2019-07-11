@@ -1,0 +1,16 @@
+
+dgt.chess.getboard z
+A=`dgt.chess.decide z`
+
+MOVE=`echo $A | awk '{printf("%s",substr($0,1,4))}'`
+MOVELENGTH=`echo $A | wc -c`
+
+echo '**** MOVELENGTH = '$MOVELENGTH' ****'
+
+if [[ $MOVELENGTH == 7 ]]; then
+#
+# move robot's pawn offboard
+#
+  echo 'YES'
+fi
+

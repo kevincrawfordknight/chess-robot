@@ -1,0 +1,12 @@
+[Event ""]
+[Site ""]
+[Date "2017.01.08"]
+[Round ""]
+[White "pi"]
+[Black "GNU Chess 6.1.2"]
+[WhiteELO "0"]
+[BlackELO "0"]
+[Result "0-1"]
+
+Qxd1# 0-1 {Xboard adjudication: Checkmate}
+

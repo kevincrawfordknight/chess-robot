@@ -1,0 +1,17 @@
+
+# Use gnuchess to decide on next move.
+#
+# Unfortunately, outputs algebraic notation, which is ambiguous for robot.
+#
+# 1. reads current position from file named $1 (.epd format)
+# 2. decides what move to make (as white), using gnuchess
+# 3. prints out move
+# 4. also stores resulting board in dgt.chess.nextpos (.epd format)
+
+rm -f dgt.chess.nextpos
+
+printf "solveepd $1\nepdsave dgt.chess.nextpos\nquit\n" | 
+gnuchess | 
+grep -a 'My move is' | 
+sed 's/My move is : //'
+

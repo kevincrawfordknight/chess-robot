@@ -1,0 +1,25 @@
+
+echo '' >scr.analyze.tmp
+
+../camera/takepic analyze-board.jpg
+
+for i in 0+0 33+0 66+0 0+25 33+25 66+25 0+50 33+50 66+50
+do
+
+  convert analyze-board.jpg -crop 33x25+$i -fuzz 35\% -fill cyan +opaque blue -colorspace GRAY -posterize 2 -fuzz 15% -fill blue -opaque black board3.jpg
+
+  B=`convert board3.jpg txt:- | awk 'NR>1' | grep -v 'FFFFFF' | wc -l`
+
+  convert analyze-board.jpg -crop 33x25+$i -fuzz 15\% -fill cyan +opaque purple -colorspace GRAY -posterize 2 -fuzz 15% -fill purple -opaque black board3.jpg
+
+  P=`convert board3.jpg txt:- | awk 'NR>1' | grep -v 'FFFFFF' | wc -l`
+
+  echo 'B'$i' = '$B'     P'$i' = '$P 
+  echo 'B'$i' = '$B'     P'$i' = '$P >>scr.analyze.tmp
+done
+
+cat scr.analyze.tmp | 
+awk '{if (NR>1) {if (($3<96)&&($6<96)) printf("- "); \
+      else if ($3>$6) printf("B "); \
+      else printf("P ")}} END {printf("\n")}' # if ((NR%3)==1) printf("\n")}}'
+

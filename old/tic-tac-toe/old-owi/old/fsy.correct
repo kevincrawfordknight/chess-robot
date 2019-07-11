@@ -1,0 +1,107 @@
+
+#=======================================================================
+# Center robot "gaze" on the red spot in the environment.   If the red 
+# spot is in a known position, for example, this serves to orient the 
+# robot into a known position (before it executes some recipe movement).
+#
+# Method (for each axis): 
+#   Find coord of dot in camera image.
+#   Rotate X seconds toward the dot.
+#   Find coord of dot in camera image again.
+#   Estimate how many more seconds to rotate (& direction) to reach dot.
+#   Rotate again toward the dot.
+#   Report final coord of dot in camera image.  
+#
+# Actually, we can more flexibly can "put the red spot" at any
+# x/y coordinate in the image gaze, not just the center.
+#=======================================================================
+
+XGOAL=50     # goal coordinates for red spot in image/gaze
+YGOAL=37     #
+SEC=1        # how many seconds for initial move
+YSEC=0.2     # how many seconds for initial move
+ALPHA=0.8    # compensate for gravity pulling elbow down
+
+#==================================================
+# determine y-coord of red spot
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+xdg-open board.jpg
+
+convert board.jpg -resize 100 -fuzz 40\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+Y1=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** y1='$Y1
+
+convert board2.jpg -negate board3.jpg
+xdg-open board3.jpg
+
+#==================================================
+# rotate elbow in direction of red spot
+#==================================================
+
+if [ "$Y1" -lt "$YGOAL" ]
+  then move 10 00 00 $YSEC
+  else move 20 00 00 $YSEC
+fi
+
+#==================================================
+# take another picture
+#==================================================
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+xdg-close
+xdg-open board.jpg
+
+#==================================================
+# determine new y-coord of red spot
+#==================================================
+
+convert board.jpg -resize 100 -fuzz 40\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+Y2=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** y2='$Y2
+
+convert board2.jpg -negate board3.jpg
+xdg-open board3.jpg
+
+#==================================================
+# figure out how much to move elbow & move it
+#==================================================
+
+if [ "$Y1" -gt "$Y2" ] && [ "$Y2" -gt "$YGOAL" ]
+  then move 20 00 00 `echo "($Y2-$YGOAL)/($Y1-$Y2)*$ALPHA*$YSEC" | bc -l`
+  elif [ "$Y1" -gt "$YGOAL" ] && [ "$YGOAL" -gt "$Y2" ]
+    then move 10 00 00 `echo "($YGOAL-$Y2)/($Y1-$Y2)*$YSEC" | bc -l`
+  elif [ "$YGOAL" -gt "$Y2" ] && [ "$Y2" -gt "$Y1" ]
+    then move 10 00 00 `echo "($YGOAL-$Y2)/($Y2-$Y1)*$YSEC" | bc -l`
+  elif [ "$Y2" -gt "$YGOAL" ] && [ "$YGOAL" -gt "$Y1" ]
+    then move 20 00 00 `echo "($Y2-$YGOAL)/($Y2-$Y1)*$ALPHA*$YSEC" | bc -l`
+fi
+
+#==================================================
+# take another picture
+#==================================================
+
+
+/home/pi/work/lincoln/camera/takepic board.jpg
+xdg-close
+xdg-open board.jpg
+
+#==================================================
+# determine final y-coord of red spot
+#==================================================
+
+convert board.jpg -resize 100 -fuzz 40\% -fill cyan +opaque red -colorspace GRAY -posterize 2 board2.jpg
+
+Y3=`convert board2.jpg txt:- | grep '000000' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$2; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** y3='$Y3
+
+convert board2.jpg -negate board3.jpg
+xdg-open board3.jpg
+sleep 3
+xdg-close

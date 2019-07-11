@@ -1,0 +1,5 @@
+
+# closes all windows opened with display
+
+sudo kill `ps -e | grep display | awk '{print $1}'` 2> /dev/null
+

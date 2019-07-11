@@ -1,0 +1,25 @@
+
+moveto 273.891204834 190.496185303 47.292388916 180.034347534
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+# move to hover over source
+moveto 258.811462402 249.925003052 87.8385696411 180.0
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 20 20
+
+# move to grasp source
+moveto 259.224975586 232.853118896 79.4422836304 180.0
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -5 -5
+
+# move to destination
+moveto  260.578704834 253.947952271 101.841400146 180.0
+
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+
+moveto 260.582855225 238.056045532 92.9426727295 180.0
+moveto 273.891204834 190.496185303 47.292388916 180.034347534
+
+

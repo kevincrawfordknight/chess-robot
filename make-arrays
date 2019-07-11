@@ -1,0 +1,29 @@
+
+paste -d ' ' positions.numbers positions.queens | 
+awk '{printf("POSQUEEN[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.knights | 
+awk '{printf("POSKNIGHT[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.rooks | 
+awk '{printf("POSROOK[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.bishops | 
+awk '{printf("POSBISHOP[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.kings | 
+awk '{printf("POSKING[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.pawns | 
+awk '{printf("POSPAWN[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+
+paste -d ' ' positions.numbers positions.hover | 
+awk '{printf("POSHOVER[%d]=_%s %s %s %s_\n",$1,$2,$3,$4,$5)}' |
+tr '_' "'" >>dgt.chess.arrays
+

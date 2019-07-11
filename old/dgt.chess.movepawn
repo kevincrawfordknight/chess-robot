@@ -1,0 +1,19 @@
+
+## move pawn at $1 $2 $3 $4
+
+./moveto 274.698974609 200.641601562 53.1892585754 180.0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 0 0.008 0 0 1
+
+./moveto $1 $2 $3 $4
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 20 20
+rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 0 0.008 0 0 1
+rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 -0.10 0 0 0 1
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -5 -5
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+
+./moveto 274.698974609 200.641601562 53.1892585754 180.0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+

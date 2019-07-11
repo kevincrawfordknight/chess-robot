@@ -1,0 +1,9 @@
+
+
+sudo -i chmod 666 /dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0
+
+sleep 2
+
+#./kk2.o | awk 'NR>1' | sed 's/^..//' | tr -d '\n' | tr -c '| ' '#' | sed 's/#|.*//' | wc -w
+
+./kk2.o

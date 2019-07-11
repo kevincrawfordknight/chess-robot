@@ -1,0 +1,11 @@
+
+# grab piece from red/green orientation position
+
+move1 0 2 0 3
+fs.correct 50 60 1 blue 40
+move1 1 0 0 1
+move1 10 0 0 1
+move1 0 1 0 2.5
+move1 2 0 0 1 
+move1 10 0 0 1
+move1 60 0 0 2

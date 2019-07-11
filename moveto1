@@ -1,0 +1,24 @@
+
+# move vertical first, then horizontal
+
+echo 'target =    '$1 $2 $3 $4
+
+A=`rostopic echo -c /m1n4s200_driver/out/joint_angles | head -4 | sed 's/joint.://' | tr -d '\n'`
+
+C1=`echo $A | awk '{print $2}'`
+C2=`echo $A | awk '{print $3}'`
+C3=`echo $A | awk '{print $4}'`
+C4=`echo $A | awk '{print $5}'`
+
+echo 'current =   '$C1 $C2 $C3 $C4
+
+M1=`echo $1 - $C1 | bc`
+M2=`echo $2 - $C2 | bc`
+M3=`echo $3 - $C3 | bc`
+M4=`echo $4 - $C4 | bc`
+
+echo 'movement  = '$M1 $M2 $M3 $M4
+
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- 0 $M2 $M3 0
+rosrun kinova_demo joints_action_client.py -v -r m1n4s200 degree -- $M1 0 0 $M4
+

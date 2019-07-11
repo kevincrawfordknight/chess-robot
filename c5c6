@@ -1,0 +1,14 @@
+
+#./moveto1 275.186218262 175.152236938 79.0779418945 180.0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+moveto 259.224975586 232.853118896 79.4422836304 180.0
+moveto 258.811462402 249.925003052 87.8385696411 180.0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 20 20
+rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 0 0.01 0.00001 0 0
+rosrun kinova_demo pose_action_client.py -v -r m1n4s200 mdeg -- 0 -0.055 0 0.00001 0 0
+#moveto 260.578704834 253.947952271 101.841400146 180.0
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -5 -5
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -20 -20
+moveto 260.582855225 238.056045532 92.9426727295 180.0

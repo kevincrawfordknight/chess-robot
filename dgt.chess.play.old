@@ -1,0 +1,62 @@
+
+# Plays complete game of chess with Kinova robot.
+#
+# dgt.chess.play (this file) is the main loop of the game.
+# dgt.chess.getboard puts current position into dgt.chess.pos (.epd format)
+# dgt.chess.decide computes out the next move (algebraic notation)
+# dgt.chess.init places robot arm in neutral position.
+# dgt.chess.makemove <move> executes chess move (algebraic notation)
+
+NEUTRAL='273.87121582 190.305557251 47.2733459473 180.027954102'
+moveto $NEUTRAL
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- -100 -100
+rosrun kinova_demo fingers_action_client.py -r m1n4s200 percent -- 70 70
+
+R=`echo $RANDOM%8 | bc`
+if [ "$R" -eq 0 ]
+  then OPENING="e2e4"
+elif [ "$R" -eq 1 ]
+  then OPENING="d2d4"
+elif [ "$R" -eq 2 ]
+  then OPENING="d2d3"
+elif [ "$R" -eq 3 ]
+  then OPENING="b1c3"
+elif [ "$R" -eq 4 ]
+  then OPENING="g1f3"
+elif [ "$R" -eq 5 ]
+  then OPENING="g2g3"
+elif [ "$R" -eq 6 ]
+  then OPENING="c2c4"
+else
+  OPENING="f2f4"
+fi
+
+while [ 1 ]; do
+  echo 'robot deciding on move...'
+  dgt.chess.getboard dgt.chess.pos
+  cat dgt.chess.pos
+  START=`diff dgt.chess.pos dgt.chess.startpos | wc -l`
+  if [ "$START" -eq 0 ]
+    then MOVE=$OPENING
+  else
+    MOVE=`dgt.chess.decide dgt.chess.pos`
+  fi
+  echo $MOVE
+  echo 'robot making move...'
+  dgt.chess.makemove $MOVE dgt.chess.pos
+# dgt.chess.getboard dgt.chess.nextpos
+  cat dgt.chess.nextpos | sed 's/ b .*/ w - -/' >dgt.chess.nextpos2
+  echo 'robot move completed, waiting for human move...'
+  while [ 1 ]; do
+    dgt.chess.getboard dgt.chess.pos
+    A=`diff dgt.chess.pos dgt.chess.nextpos2 | wc -c`
+    if [ "$A" -ne 0 ]
+      then break
+    fi
+    sleep 1
+  done  
+done  
+
+# NOTE TO SELF:  NEED TO BE ROBUST AGAINST HUMAN HOLDING A PIECE IN THE AIR
+# FOR A FEW SECONDS.  
+

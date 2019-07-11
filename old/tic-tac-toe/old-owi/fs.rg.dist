@@ -1,0 +1,25 @@
+
+#=========================================================================
+# take picture, return horizontal distance between red and green objects
+#   % fs.rg.dict <REDFUZZ> <GREENFUZZ>
+#=========================================================================
+
+../camera/takepic board.jpg
+display board.jpg&
+
+convert board.jpg -fuzz $1% -fill cyan +opaque red -colorspace GRAY -posterize 2 -fuzz 15% -fill red -opaque black board3.jpg
+display board3.jpg&
+
+X1=`convert board3.jpg txt:- | grep -v 'FFFFFF' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+convert board.jpg -fuzz $2\% -fill cyan +opaque green -colorspace GRAY -posterize 2 -fuzz 15% -fill green -opaque black board3.jpg
+display board3.jpg&
+
+X2=`convert board3.jpg txt:- | grep -v 'FFFFFF' | tr ',' ' ' | sed 's/:.*//' | sort -n | awk ' { a[i++]=$1; } END { x=int((i+1)/2); if (x < (i+1)/2) print int((a[x-1]+a[x])/2); else print a[x-1]; }'`
+
+echo '*** x-red    = '$X1
+echo '*** x-green  = '$X2
+echo '*** dist     = '`echo $X2 - $X1 | bc`
+
+xdg-close
+

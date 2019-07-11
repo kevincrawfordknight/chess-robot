@@ -1,0 +1,31 @@
+
+# plays complete game of tic-tac-toe
+# assumes robot moves first
+# assumes robot has been placed into the scr.setup position
+
+MOVE=1
+TOTAL=0
+
+while [ $TOTAL -lt 9 ]; do
+  scr.makemove $MOVE $1 $2
+  scr.viewboard2 $1 $2
+  sleep 0.5; move1 0 0 1 1.5
+  sleep 0.5; move1 0 0 1 1.5
+  sleep 0.5; move1 0 0 1 1.5
+
+  while [ 1 ]; do
+    scr.analyze >scr.analyze.res
+    echo `tail -1 scr.analyze.res`
+    DIFF=`cat scr.analyze.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=0} {if ($0=="P") a++; else if ($0=="B") a--} END {printf("%d\n",a)}'`
+    TOTAL=`cat scr.analyze.res | tail -1 | tr ' ' '\012' | awk 'BEGIN {a=9} {if ($0=="-") a--} END {printf("%d\n",a)}'`
+    if [ "$DIFF" -eq 0 ]
+    then break 
+    fi
+    if [ "$TOTAL" -eq 9 ]
+    then break
+    fi
+  done  
+
+  MOVE=`scr.analyze | tail -1 | tr ' ' '\012' | awk '{if ($0=="-") a=NR} END {printf("%d\n",a)}'`
+done  
+
